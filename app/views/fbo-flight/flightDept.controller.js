@@ -3,7 +3,7 @@
  //Load controller
   angular.module('inspinia')
 
-	.controller('FlightDeptController', ['$scope',function($scope) {
+	.controller('FlightDeptController', function ($scope, Registration) {
 		
       $(document).ready(function(){
             // Examle data for jqGrid
@@ -28,7 +28,7 @@
               colNames:['Tail #','Make', 'Model', 'Size'],
               colModel:[
                   {name:'tail',index:'tail', editable: true, width:60, sorttype:"int",search:true},
-                  {name:'make',index:'make', editable: true, width:90, sorttype:"date", formatter:"date"},
+                  { name: 'make', index: 'make', width: 80, formatter: 'select', edittype: 'select', editoptions: { value: "1:One;2:Two"} },
                   {name:'model',index:'model', editable: true, width:100},
                   {name:'size',index:'size', editable: true, width:80, align:"right",sorttype:"int"},
               ],
@@ -63,4 +63,22 @@
               $('.wrapper-content').removeClass('animated fadeInRight');
           },700);
       });
-  }]);
+      
+      $scope.user = {};
+      $scope.userData = function(){
+          if($scope.status == true){
+            $scope.user.status = 'active';
+          }else{
+            $scope.user.status = 'inactive';
+          }
+          $scope.user.username = $scope.user.email;
+          $scope.user.userType = 'flightDetp';
+          console.log($scope.user)
+          var formdata = "email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
+          Registration.registerUser(formdata).then(function(result) {
+            console.log(result)
+              
+          })
+      }
+      
+  });

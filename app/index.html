@@ -28,6 +28,9 @@
     <link href="styles/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
     <link href="bower_components/jqGrid/css/ui.jqgrid.css" rel="stylesheet">
 
+    <!-- Toastr -->
+    <link href="bower_components/toastr/toastr.min.css" rel="stylesheet">
+
     <!-- Main Inspinia CSS files -->
     <!-- endbower -->
     <!-- endbuild -->
@@ -72,6 +75,11 @@
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/jqGrid/js/i18n/grid.locale-en.js"></script>
 <script src="bower_components/jqGrid/js/jquery.jqGrid.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+
+<!-- Toastr scripts-->
+<script src="bower_components/toastr/toastr.min.js"></script>
 
 <!-- Angular Dependiences -->
 <!--                      -->
@@ -87,11 +95,17 @@
 
 <!-- Anglar App Script -->
 <script src="scripts/app.js"></script>
+<script src="scripts/constant.js"></script>
 <script src="scripts/config.js"></script>
 <script src="scripts/directives.js"></script>
 <script src="scripts/controllers.js"></script>
 <script src="views/fbo-admin/dashboard.controller.js"></script>
 <script src="views/fbo-flight/flightDept.controller.js"></script>
+<script src="views/fbo-flight/flightDeptService.js"></script>
+<script src="views/update-airports/updateAirportController.js"></script>
+<script src="views/update-airports/updateAirportService.js"></script>
+<script src="views/login/login.service.js"></script>
+<script src="views/login/login.controller.js"></script>
 <!-- endbuild -->
 
 </body>

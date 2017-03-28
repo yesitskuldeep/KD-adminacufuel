@@ -7,9 +7,16 @@
  *
  */
 function config($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/index/dashboard");
+    $urlRouterProvider.otherwise("/login");
 
     $stateProvider
+
+        .state('login', {
+            //abstract: true,
+            url: "/login",
+            templateUrl: "views/login/login.html",
+            controller: 'LoginController'
+        })
 
         .state('index', {
             abstract: true,
@@ -25,6 +32,11 @@ function config($stateProvider, $urlRouterProvider) {
             url: "/flight",
             templateUrl: "views/fbo-flight/flight.html",
             controller: 'FlightDeptController'
+        })
+        .state('index.updateAirports', {
+            url: "/updateAirports",
+            templateUrl: "views/update-airports/update-airports.html",
+            controller: 'updateAirportController'
         })
         .state('index.minor', {
             url: "/minor",
