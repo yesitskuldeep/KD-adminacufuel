@@ -5,7 +5,7 @@
         </div>
         <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
             <button type="button" class="btn btn-default btn-sm">Cancel</button>
-            <button type="button" class="btn btn-primary btn-sm">Save Changes</button>
+            <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
         </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
                     <div class="pull-right my-toggle-switch">
                         <div class="switch">
                             <div class="onoffswitch">
-                                <input type="checkbox" checked class="onoffswitch-checkbox" id="example1">
+                                <input type="checkbox" ng-checked="status === true" ng-model="status" ng-init="status = true" class="onoffswitch-checkbox" id="example1">
                                 <label class="onoffswitch-label" for="example1">
                                     <span class="onoffswitch-inner"></span>
                                     <span class="onoffswitch-switch"></span>
@@ -34,9 +34,9 @@
                     <div class="row">
                         <form role="form">
                             <div class="col-sm-6 b-r">
-                                    <div class="form-group"><label>Username</label> <input type="email" placeholder="Email Username" class="form-control"></div>
-                                    <div class="form-group"><label>First Name</label> <input type="text" placeholder="First Name" class="form-control"></div>
-                                    <div class="form-group"><label>Last Name</label> <input type="text" placeholder="Last Name" class="form-control"></div>
+                                    <div class="form-group"><label>Username</label> <input type="email" placeholder="Email Username" ng-model="user.email" class="form-control"></div>
+                                    <div class="form-group"><label>First Name</label> <input type="text" placeholder="First Name" ng-model="user.firstName" class="form-control"></div>
+                                    <div class="form-group"><label>Last Name</label> <input type="text" placeholder="Last Name" ng-model="user.lastName" class="form-control"></div>
                                     <!-- <div>
                                         <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
                                         <label> <input type="checkbox" class="i-checks"> Remember me </label>
@@ -44,9 +44,9 @@
                                 
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group"><label>Password</label> <input type="password" placeholder="Password" class="form-control"></div>
-                                <div class="form-group"><label>Phone</label> <input type="text" placeholder="Phone" class="form-control"></div>
-                                <div class="form-group"><label>Mobile</label> <input type="text" placeholder="Mobile" class="form-control"></div>
+                                <div class="form-group"><label>Password</label> <input type="password" ng-model="user.password" placeholder="Password" class="form-control"></div>
+                                <div class="form-group"><label>Phone</label> <input type="number" ng-model="user.phone" placeholder="Phone" class="form-control"></div>
+                                <div class="form-group"><label>Mobile</label> <input type="number" ng-model="user.mobile" placeholder="Mobile" class="form-control"></div>
                             </div>
                         </form>
                     </div>
@@ -62,7 +62,7 @@
                 <div class="ibox-content">
                     <div class="row">
                         <form role="form">
-                            <textarea class="form-control" rows="10" id="comment"></textarea>
+                            <textarea class="form-control" rows="10" ng-model="user.clientNote" id="comment"></textarea>
                         </form>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="line-height: 34px;margin-bottom: 0;">Level</label>
                             <div class="col-sm-10">
-                                <select class="form-control m-b" name="account" style="margin-bottom: 0;">
-                                    <option>Silver</option>
-                                    <option>Gold</option>
+                                <select class="form-control m-b" name="account" ng-model="feature.level" style="margin-bottom: 0;">
+                                    <option value="silver" selected>Silver</option>
+                                    <option value="gold">Gold</option>
                                 </select>
                             </div>
                         </div>
@@ -100,25 +100,25 @@
                             <div class="col-lg-3">
                                 <label style="color: #1ab394;">Modularized</label>
                                 <div>
-                                    <label> <input type="checkbox" class="i-checks"> Essinta POS system </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-change="enableEssId()" ng-model="feature.essintaPosSystem" icheck> Essinta POS system </label>
                                 </div>
                                  <div>
-                                    <label> <input type="checkbox" class="i-checks" checked> AcuQuote </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-model="feature.acuQuote" icheck> AcuQuote </label>
                                 </div>
                                 <div>
-                                    <label> <input type="checkbox" class="i-checks"> AcuTrack </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-model="feature.acuTrack" icheck> AcuTrack </label>
                                 </div>
                                  <div>
-                                    <label> <input type="checkbox" class="i-checks" checked> Fuel Program </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-model="feature.fuelProgram" icheck> Fuel Program </label>
                                 </div>
                                 <div>
-                                    <label> <input type="checkbox" class="i-checks" checked> AMSTAT Integration </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-model="feature.amstatIntegration" icheck> AMSTAT Integration </label>
                                 </div>
                                  <div>
-                                    <label> <input type="checkbox" class="i-checks" checked> POS Accounting Integration </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-model="feature.posAccountingIntegration" icheck> POS Accounting Integration </label>
                                 </div>
                                 <div>
-                                    <label> <input type="checkbox" class="i-checks" checked> POS VeederRoot Integration </label>
+                                    <label> <input type="checkbox" class="i-checks" ng-model="feature.posVeederRootIntegration" icheck> POS VeederRoot Integration </label>
                                 </div>
                             </div>
                             <div class="col-lg-9" style="padding: 0;">
@@ -126,7 +126,7 @@
                                     <div class="form-group" style="margin-top: 18px;">
                                         <label class="control-label pull-left" style="color: #1ab394;line-height: 34px;">Essinta Account UID</label>
                                         <div class="col-lg-6">
-                                            <input type="text" placeholder="" style="border-color: #1ab394;" class="form-control">
+                                            <input type="text" placeholder="" ng-disabled="essAccountId" style="border-color: #1ab394;" class="form-control" ng-model="feature.essintaAccountUid">
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                     <div class="form-group" style="margin-top: 18px;">
                                         <label class="control-label pull-left" style="color: #ffa149;line-height: 34px;">Additional Device Licences</label>
                                         <div class="col-lg-6">
-                                            <input type="text" placeholder="" style="border-color: #ffa149 !important;" class="form-control">
+                                            <input type="text" placeholder="" style="border-color: #ffa149 !important;" ng-model="feature.additionalLicences" class="form-control">
                                         </div>
                                     </div>
                                 </div>

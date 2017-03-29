@@ -63,7 +63,7 @@
               $('.wrapper-content').removeClass('animated fadeInRight');
           },700);
       });
-      
+      $scope.data = {};
       $scope.user = {};
       $scope.userData = function(){
           if($scope.status == true){
@@ -80,5 +80,8 @@
               
           })
       }
+
+      $scope.data.cardType = 'creditCard';
+      
       
   });

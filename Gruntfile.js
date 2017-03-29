@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         // The grunt server settings
         connect: {
             options: {
-                port: 9000,
+                port: 9001,
                 hostname: '0.0.0.0',
                 livereload: 35729
             },
