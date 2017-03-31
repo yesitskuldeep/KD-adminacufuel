@@ -11,7 +11,7 @@
           var deferred = $q.defer();
           $http({
               method : 'POST',
-              url : BE.url +'/account/registration',
+              url : BE.url +'/account/user/registration',
               headers : {'Content-Type': 'application/x-www-form-urlencoded'},
               data : data
           })

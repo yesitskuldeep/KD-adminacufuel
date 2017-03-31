@@ -43,6 +43,21 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "views/minor.html",
             data: { pageTitle: 'Example view' }
         })
+        .state('index.getAllFBO', {
+            url: "/getAllFBO",
+            templateUrl: "views/getAllFBO/getAllFBO.html",
+            controller: 'getAllFBOController'
+        })
+        .state('index.updateFBO', {
+            url: "/updateFBO/:id",
+            templateUrl: "views/updateAllFBO/updateAllFBO.html",
+            controller: 'updateAllFBOController'
+        })
+        .state('index.fboClients', {
+            url: "/fboClients",
+            templateUrl: "views/fbo-Clients/fboClients.html",
+            controller: 'fboClientsController'
+        })
 }
 angular
     .module('inspinia')

@@ -27,6 +27,7 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles/plugins/jQueryUI/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
     <link href="bower_components/jqGrid/css/ui.jqgrid.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" type="text/css">
 
     <!-- Toastr -->
     <link href="bower_components/toastr/toastr.min.css" rel="stylesheet">
@@ -39,6 +40,7 @@
     <link href="styles/animate.css" rel="stylesheet">
     <link href="styles/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="plugins/iCheck/custom.css">
+    <link rel="stylesheet" type="text/css" href="plugins/dataTables/datatables.min.css">
     <!-- endbuild -->
 
 
@@ -66,17 +68,25 @@
 <!-- SlimScroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 
+<!-- inspinia -->
+<script src="scripts/inspinia.js"></script>
+
 <!-- Peace JS -->
 <script src="bower_components/pace/pace.min.js"></script>
 
 <!-- Angular scripts-->
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/jqGrid/js/i18n/grid.locale-en.js"></script>
 <script src="bower_components/jqGrid/js/jquery.jqGrid.min.js"></script>
 <script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
 <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+
 
 <!-- Toastr scripts-->
 <script src="bower_components/toastr/toastr.min.js"></script>
@@ -90,8 +100,9 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <!-- Custom and plugin javascript -->
-<script src="scripts/inspinia.js"></script>
+
 <script src="plugins/iCheck/icheck.min.js"></script>
+<script src="plugins/dataTables/datatables.min.js"></script>
 
 <!-- Anglar App Script -->
 <script src="scripts/app.js"></script>
@@ -107,6 +118,11 @@
 <script src="views/update-airports/updateAirportService.js"></script>
 <script src="views/login/login.service.js"></script>
 <script src="views/login/login.controller.js"></script>
+<script src="views/getAllFBO/getAllFBO.controller.js"></script>
+<script src="views/getAllFBO/getAllFBO.service.js"></script>
+<script src="views/updateAllFBO/updateAllFBO.controller.js"></script>
+<script src="views/updateAllFBO/updateAllFBO.service.js"></script>
+<script src="views/fbo-Clients/fboClient.controller.js"></script>
 <!-- endbuild -->
 
 </body>

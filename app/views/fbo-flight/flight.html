@@ -190,7 +190,7 @@
                                                  </div>
                                                  <div class="col-xs-5 col-md-5 pull-right">
                                                     <div class="form-group">
-                                                       <label for="cardCVC">CV CODE</label>
+                                                       <label for="cardCVC">CVV CODE</label>
                                                        <input type="number"  maxlength="3" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" name="cardCVC" placeholder="CVC" autocomplete="cc-csc"
                                                           required>
                                                     </div>
@@ -209,7 +209,7 @@
                                               </div>
                                               <div class="row">
                                                  <div class="col-xs-12">
-                                                    <button class="btn btn-success btn-lg btn-block" type="submit">Add</button>
+                                                    <button class="btn btn-success btn-lg btn-block" type="submit" ng-click="addCard()">Add</button>
                                                  </div>
                                               </div>
                                               <div class="row" style="display:none;">

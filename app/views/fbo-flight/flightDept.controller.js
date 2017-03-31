@@ -3,8 +3,8 @@
  //Load controller
   angular.module('inspinia')
 
-	.controller('FlightDeptController', function ($scope, Registration) {
-		
+	.controller('FlightDeptController', function ($scope, FBOFlight) {
+		FBOFlight
       $(document).ready(function(){
             // Examle data for jqGrid
 
@@ -75,13 +75,24 @@
           $scope.user.userType = 'flightDetp';
           console.log($scope.user)
           var formdata = "email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
-          Registration.registerUser(formdata).then(function(result) {
-            console.log(result)
+          FBOFlight.registerUser(formdata).then(function(result) {
+            $scope.registerId = result;
+            $scope.data.accountId = $scope.registerId;
               
           })
       }
 
       $scope.data.cardType = 'creditCard';
+      var cardData = {}
+      cardData.paymentMethodList = [];
+      $scope.addCard = function(){
+        cardData.paymentMethodList.push($scope.data);
+        console.log("cardData", cardData);
+        FBOFlight.addCardInformation(cardData).then(function(result) {
+          console.log(result)
+            
+        })
+      }
       
       
   });

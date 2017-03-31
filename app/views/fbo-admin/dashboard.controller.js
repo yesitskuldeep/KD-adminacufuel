@@ -13,6 +13,7 @@
     
     	$scope.userName = 'Dylan Goodwin';
       $scope.essAccountId = true;
+      $("#esAccId").css({ opacity: 0.5 });
       $scope.user = {};
       $scope.feature = {};
       $scope.feature.level = 'silver';
@@ -36,21 +37,29 @@
           console.log($scope.user)
           var formdata = "email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
           FBOAdmin.registerUser(formdata).then(function(result) {
-            //console.log(result)
-            // $scope.feature.accountId = result;
-            // FBOAdmin.featureControl(formdata).then(function(response) {
-            //   console.log(response)
+            console.log(result)
+            console.log(JSON.stringify(result));
+            $scope.feature.accountId = result;
+            var featureControlData = "accountId=" + $scope.feature.accountId + "&level=" + $scope.feature.level + "&essintaPosSystem=" + $scope.feature.essintaPosSystem 
+            + "&acuQuote=" + $scope.feature.acuQuote + "&acuTrack=" + $scope.feature.acuTrack + "&fuelProgram=" + $scope.feature.fuelProgram + "&amstatIntegration=" + $scope.feature.amstatIntegration+ "&posAccountingIntegration=" 
+            + $scope.feature.posAccountingIntegration + "&posVeederRootIntegration=" + $scope.feature.posVeederRootIntegration 
+            + "&essintaAccountUid=" + $scope.feature.essintaAccountUid + "&additionalLicences=" + $scope.feature.additionalLicences;
+            
+            FBOAdmin.featureControl(featureControlData).then(function(response) {
+              console.log(response)
                 
-            // })
+            })
           })
       }
 
       $scope.enableEssId = function(){
           if($scope.feature.essintaPosSystem == true){
             $scope.essAccountId = false;
+            $("#esAccId").css({ opacity: 1 });
           }else{
             $scope.essAccountId = true;
             delete $scope.feature.essintaAccountUid;
+            $("#esAccId").css({ opacity: 0.5 });
           }
       }
 
