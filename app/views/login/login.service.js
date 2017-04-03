@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('inspinia')
+  angular.module('acuefuel')
       .service('LoginService', ['$rootScope', '$q', '$http', 'BE', LoginService])
 
    function LoginService($rootScope, $q, $http, BE) {

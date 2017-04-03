@@ -1,7 +1,7 @@
 'use strict';
 
  //Load controller
-  angular.module('inspinia')
+  angular.module('acuefuel')
 
 	.controller('DashboardController', function($scope, FBOAdmin) {
 	    $(document).ready(function(){

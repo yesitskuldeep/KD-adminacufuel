@@ -1,7 +1,7 @@
 /**
- * INSPINIA - Responsive Admin Theme
+ * Acuefuel - Responsive Admin Theme
  *
- * Inspinia theme use AngularUI Router to manage routing and views
+ * Acuefuel theme use AngularUI Router to manage routing and views
  * Each view are defined as state.
  * Initial there are written stat for all view in theme.
  *
@@ -55,7 +55,7 @@ function config($stateProvider, $urlRouterProvider) {
         })
 }
 angular
-    .module('inspinia')
+    .module('acuefuel')
     .config(config)
     .run(function($rootScope, $state) {
         $rootScope.$state = $state;

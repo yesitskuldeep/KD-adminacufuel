@@ -1,5 +1,5 @@
 /**
- * INSPINIA - Responsive Admin Theme
+ * Acuefuel - Responsive Admin Theme
  * 2.7
  *
  * Custom scripts

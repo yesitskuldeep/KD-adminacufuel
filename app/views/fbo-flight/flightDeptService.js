@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('inspinia')
+  angular.module('acuefuel')
       .service('FBOFlight', ['$rootScope', '$q', '$http', 'BE', FBOFlight])
 
    function FBOFlight($rootScope, $q, $http, BE) {

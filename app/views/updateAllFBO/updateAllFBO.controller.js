@@ -1,7 +1,7 @@
 'use strict';
 
  //Load controller
-  angular.module('inspinia')
+  angular.module('acuefuel')
 
 	.controller('updateAllFBOController', function($scope, $stateParams, UpdateAllFBO) {
 	    $(document).ready(function(){

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('inspinia')
+  angular.module('acuefuel')
       .service('UpdateAirportService', ['$rootScope', '$q', '$http', 'BE', UpdateAirportService])
 
    function UpdateAirportService($rootScope, $q, $http, BE) {

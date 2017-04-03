@@ -1,7 +1,7 @@
 'use strict';
 
  //Load controller
-  angular.module('inspinia')
+  angular.module('acuefuel')
 
 	.controller('fboClientsController', function($scope, $stateParams, FBOClient) {
   	    $(document).ready(function(){

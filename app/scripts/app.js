@@ -1,9 +1,9 @@
 /**
- * INSPINIA - Responsive Admin Theme
+ * acuefuel - Responsive Admin Theme
  *
  */
 (function () {
-    angular.module('inspinia', [
+    angular.module('acuefuel', [
     	'ngCookies',					// angular-cookies
     	'ngResource',					//angular resouce
     	'ngAnimate',					// angular animate

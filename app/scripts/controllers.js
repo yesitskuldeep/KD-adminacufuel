@@ -1,5 +1,5 @@
 /**
- * INSPINIA - Responsive Admin Theme
+ * acuefuel - Responsive Admin Theme
  *
  */
 
@@ -16,5 +16,5 @@ function MainCtrl($scope, $location) {
 
 
 angular
-    .module('inspinia')
+    .module('acuefuel')
     .controller('MainCtrl', MainCtrl)

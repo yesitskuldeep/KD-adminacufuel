@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('inspinia')
+angular.module('acuefuel')
 
 .controller('updateAirportController', function ($scope, UpdateAirportService) {
   		$scope.dropName = true;

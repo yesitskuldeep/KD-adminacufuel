@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('inspinia')
+  angular.module('acuefuel')
       .service('FBOAdmin', ['$rootScope', '$q', '$http', 'BE', FBOAdmin])
 
    function FBOAdmin($rootScope, $q, $http, BE) {
