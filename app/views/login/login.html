@@ -7,14 +7,14 @@
         <!-- <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
         </p> -->
         <p>Login in. To see it in action.</p>
-        <form class="m-t" role="form" action="#">
+        <form class="m-t" role="form">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" required="" ng-model="user.username">
+                <input type="text" class="form-control" placeholder="Username" required="" ng-model="user.username" required>
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Password" required="" ng-model="user.password">
+                <input type="password" class="form-control" placeholder="Password" required="" ng-model="user.password" required>
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b" ng-click="userData()">Login</button>
+            <button class="btn btn-primary block full-width m-b" ng-click="userData()">Login</button>
 
            <!--  <a ui-sref="forgot_password"><small>Forgot password?</small></a>
             <p class="text-muted text-center"><small>Do not have an account?</small></p>
