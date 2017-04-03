@@ -6,12 +6,16 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($scope, $location) {
+function MainCtrl($scope, $location, LoginService) {
 
     $scope.userName = 'Dylan Goodwin';
     $scope.helloText = 'Welcome in SeedProject';
     $scope.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
     
+    $scope.logout = function(){
+    	console.log("Called")
+    	LoginService.logout();
+    }
 };
 
 

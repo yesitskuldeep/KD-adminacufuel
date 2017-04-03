@@ -28,65 +28,90 @@
                         <tr style="background: #f9f9f9;">
                             <td>Airports</td>
                             <td>
-                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;">
+                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;" ng-show="showAirports">
                                     <div ngf-drop="importAirportData($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="">
                                         <div class="dz-default dz-message drop-box" ngf-select="importAirportData($file)" ng-model="picFile">
                                             <p class="dpFiles"><i style="color: red;margin-right: 5px;" class="fa fa-caret-right" aria-hidden="true"></i><span ng-show="dropName">Drop files here or click to upload (Or Click)</span><span ng-hide="dropName">{{selectedFile.name}}</span><br></p>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="spinner" ng-hide="showAirports" style="margin: 0px auto 0;">
+                                  <div class="bounce1"></div>
+                                  <div class="bounce2"></div>
+                                  <div class="bounce3"></div>
+                                </div>
                             </td>
                             <td>{{newDate}}</td>
                         </tr>
                         <tr style="background: #fff;">
                             <td>Countries</td>
                             <td>
-                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;">
+                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;" ng-show="showCountries">
                                     <div ngf-drop="importCountryData($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="">
                                         <div class="dz-default dz-message drop-box" ngf-select="importCountryData($file)" ng-model="countryFile">
                                             <p class="dpFiles"><i style="color: red;margin-right: 5px;" class="fa fa-caret-right" aria-hidden="true"></i><span ng-show="countryName">Drop files here or click to upload (Or Click)</span><span ng-hide="countryName">{{selectedCountry.name}}</span><br></p>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="spinner" ng-hide="showCountries" style="margin: 0px auto 0;">
+                                  <div class="bounce1"></div>
+                                  <div class="bounce2"></div>
+                                  <div class="bounce3"></div>
+                                </div>
                             </td>
                             <td>{{newDate}}</td>
                         </tr>
                         <tr style="background: #f9f9f9;">
                             <td>FBOHandlerDetail</td>
                             <td>
-                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;">
+                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;" ng-show="fboHandlerDetail">
                                     <div ngf-drop="importFboHandler($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="">
                                         <div class="dz-default dz-message drop-box" ngf-select="importFboHandler($file)" ng-model="FBOFile">
                                             <p class="dpFiles"><i style="color: red;margin-right: 5px;" class="fa fa-caret-right" aria-hidden="true"></i><span ng-show="fboHandlerName">Drop files here or click to upload (Or Click)</span><span ng-hide="fboHandlerName">{{selectedFBO.name}}</span><br></p>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="spinner" ng-hide="fboHandlerDetail" style="margin: 0px auto 0;">
+                                  <div class="bounce1"></div>
+                                  <div class="bounce2"></div>
+                                  <div class="bounce3"></div>
+                                </div>
                             </td>
                             <td>{{newDate}}</td>
                         </tr>
                         <tr style="background: #fff;">
                             <td>SubdivisionStates</td>
                             <td>
-                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;">
+                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;" ng-show="subDivState">
                                     <div ngf-drop="importsubDivisionData($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="">
                                         <div class="dz-default dz-message drop-box" ngf-select="importsubDivisionData($file)" ng-model="stateFile">
                                             <p class="dpFiles"><i style="color: red;margin-right: 5px;" class="fa fa-caret-right" aria-hidden="true"></i><span ng-show="subDivisionName">Drop files here or click to upload (Or Click)</span><span ng-hide="subDivisionName">{{selectedState.name}}</span><br></p>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="spinner" ng-hide="subDivState" style="margin: 0px auto 0;">
+                                  <div class="bounce1"></div>
+                                  <div class="bounce2"></div>
+                                  <div class="bounce3"></div>
+                                </div>
                             </td>
                             <td>{{newDate}}</td>
                         </tr>
                         <tr style="background: #f9f9f9;">
                             <td>SupplierDetail</td>
                             <td>
-                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;">
+                                <form class="dropzone12 dz-clickable" id="dropzoneForm" style="cursor: pointer;" ng-show="suppDetail">
                                     <div ngf-drop="importSuppluerDetail($files)" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-pattern="">
                                         <div class="dz-default dz-message drop-box" ngf-select="importSuppluerDetail($file)">
                                             <p class="dpFiles"><i style="color: red;margin-right: 5px;" class="fa fa-caret-right" aria-hidden="true"></i><span ng-show="supplierName">Drop files here or click to upload (Or Click)</span><span ng-hide="supplierName">{{selectedSuplier.name}}</span><br></p>
                                         </div>
                                     </div>
                                 </form>
+                                <div class="spinner" ng-hide="suppDetail" style="margin: 0px auto 0;">
+                                  <div class="bounce1"></div>
+                                  <div class="bounce2"></div>
+                                  <div class="bounce3"></div>
+                                </div>
                             </td>
                             <td>{{newDate}}</td>
                         </tr>
@@ -97,9 +122,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="spinner" ng-show="myLoader">
-  <div class="bounce1"></div>
-  <div class="bounce2"></div>
-  <div class="bounce3"></div>
 </div>

@@ -54,7 +54,7 @@
           $http({
               method : 'POST',
               url : BE.url +'/user/logout',
-              headers : {'Content-Type': 'application/x-www-form-urlencoded'},
+              headers : {'Content-Type': 'application/json'},
               data : data
           })
           .success(function(result) {

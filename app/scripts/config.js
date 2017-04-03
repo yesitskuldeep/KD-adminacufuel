@@ -48,6 +48,11 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "views/updateAllFBO/updateAllFBO.html",
             controller: 'updateAllFBOController'
         })
+        .state('index.updateFBODept', {
+            url: "/updateFBODept/:id",
+            templateUrl: "views/updateFBODept/updateFBODept.html",
+            controller: 'updateFBODeptController'
+        })
         .state('index.fboClients', {
             url: "/fboClients",
             templateUrl: "views/fbo-Clients/fboClients.html",

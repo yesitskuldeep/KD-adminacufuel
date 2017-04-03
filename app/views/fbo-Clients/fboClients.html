@@ -58,7 +58,7 @@
                            <div class="table-responsive">
                               <table class="table table-striped table-hover">
                                  <tbody>
-                                    <tr ng-repeat="dept in fboDeptList">
+                                    <tr ng-repeat="dept in fboDeptList" ui-sref="index.updateFBODept({id: dept.user.id})" style="cursor: pointer;">
                                        <td><a data-toggle="tab" href="#company-1" class="client-link">Tellus Institute</a></td>
                                        <td>{{dept.user.firstName}}</td>
                                        <td><i class="fa fa-flag"></i> {{dept.user.lastName}}</td>
