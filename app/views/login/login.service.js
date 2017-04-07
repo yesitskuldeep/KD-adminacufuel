@@ -53,8 +53,8 @@
           var deferred = $q.defer();
           $http({
               method : 'POST',
-              url : BE.url +'/user/logout',
-              headers : {'Content-Type': 'application/json'},
+              url : BE.url +'/logout',
+              headers : {'Content-Type': 'application/x-www-form-urlencoded'},
               data : data
           })
           .success(function(result) {

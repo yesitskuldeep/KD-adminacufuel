@@ -8,12 +8,33 @@ angular.module('acuefuel')
       	$scope.countryName = true;
       	$scope.subDivisionName = true;
       	$scope.fboHandlerName = true;
-      	$scope.showAirports = true;
-      	$scope.showCountries = true;
-      	$scope.fboHandlerDetail = true;
-      	$scope.subDivState = true;
-      	$scope.suppDetail = true;
-
+      	console.log(localStorage.getItem('airportLoader'))
+      	if(localStorage.getItem('airportLoader') == 'false'){
+      		$scope.showAirports = false;
+      	}else{
+      		$scope.showAirports = true;
+      	}
+      	if(localStorage.getItem('countryLoader') == 'false'){
+      		$scope.showCountries = false;
+      	}else{
+      		$scope.showCountries = true;
+      	}
+      	if(localStorage.getItem('fboHandleLoader') == 'false'){
+      		$scope.fboHandlerDetail = false;
+      	}else{
+      		$scope.fboHandlerDetail = true;
+      	}
+      	if(localStorage.getItem('subDivStateLoader') == 'false'){
+      		$scope.subDivState = false;
+      	}else{
+      		$scope.subDivState = true;
+      	}
+      	if(localStorage.getItem('suppDetailLoader') == 'false'){
+      		$scope.suppDetail = false;
+      	}else{
+      		$scope.suppDetail = true;
+      	}
+      	
   		// Showing Date
       	var today = new Date();
 		var dd = today.getDate();
@@ -31,6 +52,7 @@ angular.module('acuefuel')
 		$scope.data = {};
 		$scope.importAirportData = function(fileName) {
 			$scope.showAirports = false;
+			window.localStorage.setItem('airportLoader', false);
 			console.log(fileName)
 			if(fileName.name != undefined){
 				$scope.dropName = false;
@@ -45,6 +67,7 @@ angular.module('acuefuel')
 			console.log(fileCheck)
 			if(fileCheck == 'csv'){
 				UpdateAirportService.updateAirportData($scope.data).then(function(result) {
+					localStorage.removeItem('airportLoader');
 					$scope.showAirports = true;
 			  		console.log(result)
 			  	 	toastr.success('Copied', {
@@ -52,6 +75,7 @@ angular.module('acuefuel')
 		            })
 				})
 			}else {
+				localStorage.removeItem('airportLoader');
 				$scope.showAirports = true;
 				$scope.dropName = true;
 				toastr.error('Please select only csv file', {
@@ -65,6 +89,7 @@ angular.module('acuefuel')
 		$scope.supplierData = {};
 		$scope.importSuppluerDetail = function(fileName){
 			$scope.suppDetail = false;
+			window.localStorage.setItem('suppDetailLoader', false);
 			console.log(fileName)
 			if(fileName.name != undefined){
 				$scope.supplierName = false;
@@ -81,11 +106,13 @@ angular.module('acuefuel')
 				UpdateAirportService.updateSupplierDetail($scope.supplierData).then(function(result) {
 			  	console.log(result)
 			  		$scope.suppDetail = true;
+			  		localStorage.removeItem('suppDetailLoader');
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
 				})
 			}else {
+				localStorage.removeItem('suppDetailLoader');
 				$scope.suppDetail = true;
 				$scope.supplierName = true;
 				toastr.error('Please select only csv file', {
@@ -98,6 +125,7 @@ angular.module('acuefuel')
 		$scope.countryData = {};
 		$scope.importCountryData = function(fileName){
 			$scope.showCountries = false;
+			window.localStorage.setItem('countryLoader', false);
 			console.log(fileName)
 			if(fileName.name != undefined){
 				$scope.countryName = false;
@@ -114,11 +142,13 @@ angular.module('acuefuel')
 				UpdateAirportService.updateCountries($scope.countryData).then(function(result) {
 			  	console.log(result)
 			  		$scope.showCountries = true;
+			  		localStorage.removeItem('countryLoader');
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
 				})
 			}else {
+				localStorage.removeItem('countryLoader');
 				$scope.showCountries = true;
 				$scope.countryName = true;
 				toastr.error('Please select only csv file', {
@@ -131,6 +161,7 @@ angular.module('acuefuel')
 		$scope.subDivisionData = {};
 		$scope.importsubDivisionData = function(fileName){
 			$scope.subDivState = false;
+			window.localStorage.setItem('subDivStateLoader', false);
 			console.log(fileName)
 			if(fileName.name != undefined){
 				$scope.subDivisionName = false;
@@ -146,12 +177,14 @@ angular.module('acuefuel')
 			if(fileCheck == 'csv'){
 				UpdateAirportService.updateSubDivisionState($scope.subDivisionData).then(function(result) {
 			  	console.log(result)
+			  		localStorage.removeItem('subDivStateLoader');
 			  		$scope.subDivState = true;
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
 				})
 			}else {
+				localStorage.removeItem('subDivStateLoader');
 				$scope.subDivState = true;
 				$scope.subDivisionName = true;
 				toastr.error('Please select only csv file', {
@@ -164,6 +197,7 @@ angular.module('acuefuel')
 		$scope.fboHandlerData = {};
 		$scope.importFboHandler = function(fileName){
 			$scope.fboHandlerDetail = false;
+			window.localStorage.setItem('fboHandleLoader', false);
 			console.log(fileName)
 			if(fileName.name != undefined){
 				$scope.fboHandlerName = false;
@@ -179,12 +213,14 @@ angular.module('acuefuel')
 			if(fileCheck == 'csv'){
 				UpdateAirportService.updateFBOHandler($scope.fboHandlerData).then(function(result) {
 			  	console.log(result)
+			  		localStorage.removeItem('fboHandleLoader');
 			  		$scope.fboHandlerDetail = true;
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
 				})
 			}else {
+				localStorage.removeItem('fboHandleLoader');
 				$scope.fboHandlerDetail = true;
 				$scope.fboHandlerName = true;
 				toastr.error('Please select only csv file', {

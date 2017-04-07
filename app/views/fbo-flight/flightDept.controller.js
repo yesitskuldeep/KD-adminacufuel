@@ -3,7 +3,7 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('FlightDeptController', function ($scope, FBOFlight) {
+	.controller('FlightDeptController', function ($scope, $uibModal, FBOFlight) {
       $scope.data = {};
       $scope.user = {};
       $scope.userData = function(){
@@ -15,7 +15,7 @@
           $scope.user.username = $scope.user.email;
           $scope.user.userType = 'flightDetp';
           console.log($scope.user)
-          var formdata = "email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
+          var formdata = "companyName=" + $scope.user.companyName + "&email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
           FBOFlight.registerUser(formdata).then(function(result) {
             $scope.registerId = result;
             $scope.data.accountId = $scope.registerId;
@@ -34,6 +34,5 @@
             
         })
       }
-      
-      
+
   });

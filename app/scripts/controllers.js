@@ -6,7 +6,7 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($scope, $location, LoginService) {
+function MainCtrl($scope, $location, $state, LoginService) {
 
     $scope.userName = 'Dylan Goodwin';
     $scope.helloText = 'Welcome in SeedProject';
@@ -15,6 +15,7 @@ function MainCtrl($scope, $location, LoginService) {
     $scope.logout = function(){
     	console.log("Called")
     	LoginService.logout();
+    	$state.go('login')
     }
 };
 

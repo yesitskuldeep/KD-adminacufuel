@@ -1,12 +1,14 @@
-</div>
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-8">
-            <h2>Tellus Institute</h2>
-        </div>
-        <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
-            <button type="button" class="btn btn-default btn-sm">Cancel</button>
-            <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
-        </div>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+     <div class="col-lg-2">
+        <h2>{{user.companyName}}</h2>
+    </div>
+    <div class="col-lg-4" style="margin-top: 20px;">
+        <button type="button" class="btn btn-w-m btn-danger" ng-click="deleteData()">Delete Account</button>
+    </div>
+    <div class="col-lg-6" style="margin-top: 20px; text-align: right;">
+        <button type="button" class="btn btn-default btn-sm">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -34,7 +36,8 @@
                     <div class="row">
                         <form role="form">
                             <div class="col-sm-6 b-r">
-                                    <div class="form-group"><label>Username</label> <input type="email" placeholder="Email Username" ng-model="user.email" class="form-control"></div>
+                                    <div class="form-group"><label>Company Name</label> <input type="text" placeholder="Company Name" ng-model="user.companyName" class="form-control"></div>
+                                    <!-- <div class="form-group"><label>Username</label> <input type="email" placeholder="Email Username" ng-model="user.email" class="form-control"></div> -->
                                     <div class="form-group"><label>First Name</label> <input type="text" placeholder="First Name" ng-model="user.firstName" class="form-control"></div>
                                     <div class="form-group"><label>Last Name</label> <input type="text" placeholder="Last Name" ng-model="user.lastName" class="form-control"></div>
                                     <!-- <div>

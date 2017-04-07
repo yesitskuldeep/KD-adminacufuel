@@ -34,6 +34,7 @@
                     <div class="row">
                         <form role="form">
                             <div class="col-sm-6 b-r">
+                                    <div class="form-group"><label>Company Name</label> <input type="text" placeholder="Company Name" ng-model="user.companyName" class="form-control"></div>
                                     <div class="form-group"><label>Username</label> <input type="email" placeholder="Email Username" ng-model="user.email" class="form-control"></div>
                                     <div class="form-group"><label>First Name</label> <input type="text" placeholder="First Name" ng-model="user.firstName" class="form-control"></div>
                                     <div class="form-group"><label>Last Name</label> <input type="text" placeholder="Last Name" ng-model="user.lastName" class="form-control"></div>
@@ -77,15 +78,66 @@
       <div class="col-lg-7">
           <div class="ibox float-e-margins">
               <div class="ibox-title">
-                <div>
-                  <h3 style="float: left;">Aircraft List</h3>
-                </div>
+                <h5>Aircraft List</h5>
                 <div class="pull-right">
-                  <button type="button" class="btn btn-success color-success" style="background-color: #4caf50;">+ Add</button>
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal4">+ Add</button>
                 </div>
                 <div class="clearfix"></div>
+                <div class="modal inmodal" id="myModal4" tabindex="-1" role="dialog"  aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content animated fadeIn">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <!-- <i class="fa fa-clock-o modal-icon"></i> -->
+                                <h4 class="modal-title">Add Aircraft</h4>
+                                <!-- <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small> -->
+                            </div>
+                            <div class="modal-body" style="padding: 15px;">
+                                <table class="table table-bordered table-hover table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Tail</th>
+                                      <th>Make</th>
+                                      <th>Model</th>
+                                      <th>Size</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <input type="text" style="width:100px;" class="form-control">
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                           <option>Margin1</option>
+                                           <option>Margin2</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                           <option>Margin1</option>
+                                           <option>Margin2</option>
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <select class="form-control">
+                                           <option>Margin1</option>
+                                           <option>Margin2</option>
+                                        </select>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               </div>
-              <div class="content">
+              <div class="ibox-content">
                 <div class="table-responsive">
                   <table class="table table-bordered table-hover table-striped">
                     <thead>
@@ -94,7 +146,6 @@
                         <th>Make</th>
                         <th>Model</th>
                         <th>Size</th>
-                        <th>Margin</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -103,141 +154,19 @@
                           <input type="text" style="width:100px;" class="form-control">
                         </td>
                         <td>
-                          <select class="form-control" style="height:31px;">
+                          <select class="form-control">
                              <option>Margin1</option>
                              <option>Margin2</option>
                           </select>
                         </td>
                         <td>
-                          <select class="form-control" style="height:31px;">
+                          <select class="form-control">
                              <option>Margin1</option>
                              <option>Margin2</option>
                           </select>
                         </td>
                         <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input type="text" style="width:100px;" class="form-control">
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input type="text" style="width:100px;" class="form-control">
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input type="text" style="width:100px;" class="form-control">
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <input type="text" style="width:100px;" class="form-control">
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
-                          </select>
-                        </td>
-                        <td>
-                          <select class="form-control" style="height:31px;">
+                          <select class="form-control">
                              <option>Margin1</option>
                              <option>Margin2</option>
                           </select>

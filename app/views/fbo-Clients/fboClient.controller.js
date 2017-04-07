@@ -18,7 +18,32 @@
             $scope.clientLength = result.length;
           })
         }
+
+        $scope.searchData = function(){
+          var userType = $('#tabClient > li.active > a').attr('id');
+          searchClient($scope.searchQuery, userType);
+        }
         
+        function searchClient(searchData, userType){
+          console.log(searchData)
+          console.log(userType)
+          var data = {
+            "query" : searchData,
+            "userType" : userType
+          }
+          FBOClient.getSearchClient(data).then(function(result) {
+            console.log("hanji")
+            if(userType == 'fbo'){
+              console.log("aaya")
+              $scope.fboClient = result;
+              $scope.clientLength = result.length;
+            }else{
+              console.log("nai aaya")
+              $scope.fboDeptList = result;
+              $scope.clientLength = result.length;
+            }
+          })
+        }
 
       	$scope.fboAdmin = function(){
           getAllFbo();
