@@ -39,7 +39,7 @@
           var deferred = $q.defer();
           $http({
               method : 'GET',
-              url : BE.url +'/user/searchUser',
+              url : BE.url +'/user/search',
               headers : {'Content-Type': 'application/x-www-form-urlencoded'},
               params: data
           })

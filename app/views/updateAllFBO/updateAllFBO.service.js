@@ -54,8 +54,8 @@
           var deferred = $q.defer();
           $http({
               method : 'PUT',
-              url : BE.url +'/account/updateAccountFeatureControl',
-              headers : {'Content-Type': 'application/x-www-form-urlencoded'},
+              url : BE.url +'/account/user/updateAccountFeatureControl',
+              headers : {'Content-Type': 'application/json'},
               data: data
           })
           .success(function(result) {

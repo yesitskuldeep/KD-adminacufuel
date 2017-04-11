@@ -105,24 +105,21 @@
                                   <tbody>
                                     <tr>
                                       <td>
-                                        <input type="text" style="width:100px;" class="form-control">
+                                        <input type="text" style="width:100px;" ng-model="aircraft.tail" class="form-control">
                                       </td>
-                                      <td>
-                                        <select class="form-control">
-                                           <option>Margin1</option>
-                                           <option>Margin2</option>
+                                      <td style="width: 30%">
+                                        <select class="form-control" ng-model="aircraft.make" ng-change="getModal()">
+                                           <option ng-repeat="make in aircraftMakeList">{{make}}</option>
                                         </select>
                                       </td>
-                                      <td>
+                                      <td style="width: 30%">
                                         <select class="form-control">
-                                           <option>Margin1</option>
-                                           <option>Margin2</option>
+                                           <option ng-repeat="model in aircraftModalList" ng-model="aircraft.model">{{model}}</option>
                                         </select>
                                       </td>
-                                      <td>
+                                      <td style="width: 30%">
                                         <select class="form-control">
-                                           <option>Margin1</option>
-                                           <option>Margin2</option>
+                                           <option ng-repeat="size in aircraftSizeList" ng-model="aircraft.size">{{size}}</option>
                                         </select>
                                       </td>
                                     </tr>
@@ -131,7 +128,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-primary" ng-click="addAircraft()">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -149,26 +146,23 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr ng-repeat="airData in getCraftList track by $index">
                         <td>
-                          <input type="text" style="width:100px;" class="form-control">
+                          <input type="text" style="width:100px;" ng-model="airData.tail" class="form-control">
                         </td>
                         <td>
-                          <select class="form-control">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
+                          <select class="form-control" ng-model="airData.make">
+                             <option>{{airData.make}}</option>
                           </select>
                         </td>
                         <td>
-                          <select class="form-control">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
+                          <select class="form-control" ng-model="airData.model">
+                             <option>{{airData.model}}</option>
                           </select>
                         </td>
                         <td>
-                          <select class="form-control">
-                             <option>Margin1</option>
-                             <option>Margin2</option>
+                          <select class="form-control" ng-model="airData.size">
+                             <option>{{airData.size}}</option>
                           </select>
                         </td>
                       </tr>

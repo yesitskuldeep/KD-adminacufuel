@@ -18,6 +18,7 @@
         $scope.user = result;
         $scope.user.userTypeId = result.userType.id;
         $scope.feature = result.accountFeatureControl;
+        $scope.feature.accountId = result.account.id;
         if($scope.feature.essintaPosSystem == true){
           $scope.essAccountId = false;
           $("#esAccId").css({ opacity: 1 });
@@ -60,11 +61,11 @@
           $scope.user.username = $scope.user.email;
           $scope.user.userType = 'fbo';
           console.log($scope.user)
-          var updateData = "companyName=" + $scope.user.companyName + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&userNote=" + $scope.user.clientNote + "&userNoteId=" + $scope.user.userNoteId + "&userTypeId=" + $scope.user.userTypeId;
+          var updateData = "companyName=" + $scope.user.companyName + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&userNote=" + $scope.user.clientNote + "&userNoteId=" + $scope.user.userNoteId + "&userTypeId=" + $scope.user.userTypeId + "&userProfileId=" + userProfileID;
           UpdateAllFBO.updateUser(updateData).then(function(result) {
-            console.log(result)
-            console.log(JSON.stringify(result));
-            $scope.feature.accountId = result;
+            toastr.success(''+result.success+'', {
+                closeButton: true
+            })
             var updatefeatureControlData = "accountId=" + $scope.feature.accountId + "&level=" + $scope.feature.level + "&essintaPosSystem=" + $scope.feature.essintaPosSystem 
             + "&acuQuote=" + $scope.feature.acuQuote + "&acuTrack=" + $scope.feature.acuTrack + "&fuelProgram=" + $scope.feature.fuelProgram + "&amstatIntegration=" + $scope.feature.amstatIntegration+ "&posAccountingIntegration=" 
             + $scope.feature.posAccountingIntegration + "&posVeederRootIntegration=" + $scope.feature.posVeederRootIntegration 
@@ -72,7 +73,9 @@
             
             UpdateAllFBO.updatefeatureControl(updatefeatureControlData).then(function(response) {
               console.log(response)
-                
+              toastr.success(''+response.success+'', {
+                closeButton: true
+              })
             })
           })
       }
