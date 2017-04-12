@@ -6,6 +6,7 @@
 	.controller('updateFBODeptController', function($scope, $stateParams, UpdateAllFBODept, UpdateAllFBO, FBOFlight) {
       $scope.showPayments = true;
       $scope.aircraft = {};
+      $scope.updateData = {};
       var userProfileID = $stateParams.id;
       UpdateAllFBODept.getALlFBOData(userProfileID).then(function(result) {
         console.log(result)
@@ -25,10 +26,13 @@
         }
       })
 
-      UpdateAllFBODept.getAircrafts(userProfileID).then(function(response) {
+      getCrafts();
+      function getCrafts(){
+        UpdateAllFBODept.getAircrafts(userProfileID).then(function(response) {
           $scope.getCraftList = response;
-      })
-
+        })
+      }
+      
       UpdateAllFBODept.getPaymentMethod(userProfileID).then(function(response) {
           $scope.paymentList = response;
 
@@ -110,26 +114,71 @@
         FBOFlight.getModal(modelId).then(function(result) {
           $scope.aircraftModalList = result;
           $scope.aircraft.model = $scope.aircraftModalList[0];
-            
         })
       }
       $scope.aircraftData = {};
       $scope.aircraftData.aircraftList = [];
-      $scope.getCraftList = [];
       $scope.addAircraft = function(){
         $scope.aircraftData.aircraftList.push($scope.aircraft);
-        console.log($scope.aircraftData.aircraftList)
-        if ($scope.getCraftList.indexOf($scope.aircraft) == -1) {
-            $scope.getCraftList.push($scope.aircraft);
-            
-        }
         
         FBOFlight.addAircraft($scope.aircraftData).then(function(result) {
           $('#myModal4').modal('hide');
+          getCrafts();
           $scope.resetData();
           toastr.success('Created Successfully', {
             closeButton: true
           })
+        })
+      }
+
+      $scope.closeModal = function(){
+        $("#myModal5").modal('hide');
+        $scope.resetData();
+      }
+
+      $scope.update = function(airdata){
+        console.log(airdata)
+        $scope.aircraft = airdata;
+        $scope.aircraft.accountId = $scope.user.account.id;
+        $("#myModal5").modal('show');
+        FBOFlight.getModal($scope.aircraft.make).then(function(result) {
+          $scope.aircraftModalList = result;
+            
+        })
+      }
+
+      $scope.updatecraftData = {};
+      $scope.updatecraftData.aircraftList = [];
+      $scope.updateAircraftData = {};
+
+      $scope.updateAircraft = function(updateAircraft){
+        $scope.updateAircraftData.id = updateAircraft.id;
+        $scope.updateAircraftData.make = updateAircraft.make;
+        $scope.updateAircraftData.model = updateAircraft.model;
+        $scope.updateAircraftData.size = updateAircraft.size;
+        $scope.updateAircraftData.tail = updateAircraft.tail;
+        $scope.updateAircraftData.accountId = updateAircraft.accountId;
+        console.log($scope.updateAircraftData)
+
+        $scope.updatecraftData.aircraftList.push($scope.updateAircraftData);
+        console.log($scope.updatecraftData.aircraftList)
+        
+        UpdateAllFBODept.updateAircraft($scope.updatecraftData).then(function(result) {
+          $('#myModal5').modal('hide');
+          $scope.resetData();
+          toastr.success('Updated Successfully', {
+            closeButton: true
+          })
+        })
+      }
+
+      $scope.remove = function(data){
+        console.log(data)
+        UpdateAllFBODept.removeAircraft(data.id).then(function(result) {
+          toastr.success(''+result.success+'', {
+            closeButton: true
+          })
+          getCrafts();
         })
       }
 

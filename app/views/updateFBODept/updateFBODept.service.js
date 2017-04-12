@@ -77,6 +77,35 @@
           return deferred.promise;
         }
 
+        this.updateAircraft = function(data) {
+
+          var deferred = $q.defer();
+          $http({
+              method : 'PUT',
+              url : BE.url +'/account/user/updateAircraft',
+              headers : {'Content-Type': 'application/json'},
+              data: data
+          })
+          .success(function(result) {
+              deferred.resolve(result);
+          })
+          return deferred.promise;
+        }
+
+        this.removeAircraft = function(id) {
+
+          var deferred = $q.defer();
+          $http({
+              method : 'DELETE',
+              url : BE.url +'/account/user/airCraft/'+id,
+              headers : {'Content-Type': 'application/json'},
+          })
+          .success(function(result) {
+              deferred.resolve(result);
+          })
+          return deferred.promise;
+        }
+
    }
 
 })();
