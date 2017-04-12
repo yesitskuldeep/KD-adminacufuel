@@ -11,22 +11,26 @@
           });
 
       });
-
+      $scope.feature = {};
       var userProfileID = $stateParams.id;
       UpdateAllFBO.getALlFBOData(userProfileID).then(function(result) {
         console.log(result)
         $scope.user = result;
         $scope.user.userTypeId = result.userType.id;
-        $scope.feature = result.accountFeatureControl;
         $scope.feature.accountId = result.account.id;
-        if($scope.feature.essintaPosSystem == true){
-          $scope.essAccountId = false;
-          $("#esAccId").css({ opacity: 1 });
-        }else{
-          $scope.essAccountId = true;
-          delete $scope.feature.essintaAccountUid;
-          $("#esAccId").css({ opacity: 0.5 });
+        if(result.accountFeatureControl != null){
+          $scope.feature = result.accountFeatureControl;
+          console.log($scope.feature)
+          if($scope.feature.essintaPosSystem == true){
+            $scope.essAccountId = false;
+            $("#esAccId").css({ opacity: 1 });
+          }else{
+            $scope.essAccountId = true;
+            delete $scope.feature.essintaAccountUid;
+            $("#esAccId").css({ opacity: 0.5 });
+          }
         }
+        
         UpdateAllFBO.getNotes(userProfileID).then(function(response) {
           $scope.user.clientNote = response[0].notes
           $scope.user.userNoteId = response[0].id;
@@ -61,6 +65,9 @@
           $scope.user.username = $scope.user.email;
           $scope.user.userType = 'fbo';
           console.log($scope.user)
+          // if($scope.user.userNoteId == undefined){
+          //   $scope.user.userNoteId = null;
+          // }
           var updateData = "companyName=" + $scope.user.companyName + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&userNote=" + $scope.user.clientNote + "&userNoteId=" + $scope.user.userNoteId + "&userTypeId=" + $scope.user.userTypeId + "&userProfileId=" + userProfileID;
           UpdateAllFBO.updateUser(updateData).then(function(result) {
             toastr.success(''+result.success+'', {
