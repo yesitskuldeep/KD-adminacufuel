@@ -24,21 +24,32 @@
             toastr.success('Created Successfully', {
               closeButton: true
             })
-          })
+          }, function (err) {
+              toastr.error('Error in registering', {
+                closeButton: true
+              })
+          });
       }
 
       $scope.data.cardType = 'creditCard';
       var cardData = {}
       cardData.paymentMethodList = [];
       $scope.addCard = function(){
-        cardData.paymentMethodList.push($scope.data);
-        console.log("cardData", cardData);
-        FBOFlight.addCardInformation(cardData).then(function(result) {
-          console.log(result)
-            toastr.success('Created Successfully', {
-              closeButton: true
-            })
-        })
+        if($scope.aircraft.accountId == undefined){
+          toastr.error('Please Add Contact Information', {
+            closeButton: true
+          })
+        }else{
+          cardData.paymentMethodList.push($scope.data);
+          console.log("cardData", cardData);
+          FBOFlight.addCardInformation(cardData).then(function(result) {
+            console.log(result)
+              toastr.success('Created Successfully', {
+                closeButton: true
+              })
+          })
+        }
+        
       }
 
       getData();
@@ -70,10 +81,23 @@
             
         })
       }
+
+      $scope.openModal = function(){
+        if($scope.aircraft.accountId == undefined){
+          toastr.error('Please Add Contact Information', {
+            closeButton: true
+          })
+          $('#myModal4').modal('hide');
+        }else{
+          $('#myModal4').modal('show');
+        }
+        
+      }
       $scope.aircraftData = {};
       $scope.aircraftData.aircraftList = [];
       $scope.getCraftList = [];
       $scope.addAircraft = function(){
+        console.log($scope.aircraft.accountId)
         $scope.aircraftData.aircraftList.push($scope.aircraft);
         console.log($scope.aircraftData.aircraftList)
         if ($scope.getCraftList.indexOf($scope.aircraft) == -1) {
@@ -88,6 +112,7 @@
             closeButton: true
           })
         })
+        
       }
 
       $scope.reset = function() {

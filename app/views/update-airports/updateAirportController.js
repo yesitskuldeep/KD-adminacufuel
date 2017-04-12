@@ -73,7 +73,13 @@ angular.module('acuefuel')
 			  	 	toastr.success('Copied', {
 		              closeButton: true
 		            })
-				})
+				}, function (err) {
+					localStorage.removeItem('airportLoader');
+					$scope.showAirports = true;
+					toastr.error('Error in uploading', {
+						closeButton: true
+					})
+				});
 			}else {
 				localStorage.removeItem('airportLoader');
 				$scope.showAirports = true;
@@ -110,7 +116,13 @@ angular.module('acuefuel')
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
-				})
+				}, function (err) {
+					localStorage.removeItem('suppDetailLoader');
+					$scope.suppDetail = true;
+					toastr.error('Error in uploading', {
+						closeButton: true
+					})
+				});
 			}else {
 				localStorage.removeItem('suppDetailLoader');
 				$scope.suppDetail = true;
@@ -146,7 +158,13 @@ angular.module('acuefuel')
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
-				})
+				}, function (err) {
+					localStorage.removeItem('countryLoader');
+					$scope.showCountries = true;
+					toastr.error('Error in uploading', {
+						closeButton: true
+					})
+				});
 			}else {
 				localStorage.removeItem('countryLoader');
 				$scope.showCountries = true;
@@ -182,7 +200,13 @@ angular.module('acuefuel')
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
-				})
+				}, function (err) {
+					localStorage.removeItem('subDivStateLoader');
+					$scope.subDivState = true;
+					toastr.error('Error in uploading', {
+						closeButton: true
+					})
+				});
 			}else {
 				localStorage.removeItem('subDivStateLoader');
 				$scope.subDivState = true;
@@ -218,7 +242,13 @@ angular.module('acuefuel')
 			  	 	toastr.success('File Upload Successfully', {
 		              closeButton: true
 		            })
-				})
+				}, function (err) {
+					localStorage.removeItem('fboHandleLoader');
+					$scope.fboHandlerDetail = true;
+					toastr.error('Error in uploading', {
+						closeButton: true
+					})
+				});
 			}else {
 				localStorage.removeItem('fboHandleLoader');
 				$scope.fboHandlerDetail = true;
