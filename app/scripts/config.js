@@ -53,10 +53,20 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "views/updateFBODept/updateFBODept.html",
             controller: 'updateFBODeptController'
         })
-        .state('index.fboClients', {
-            url: "/fboClients",
+        // .state('index.fboClients', {
+        //     url: "/fboClients",
+        //     templateUrl: "views/fbo-Clients/fboClients.html",
+        //     controller: 'fboClientsController'
+        // })
+        .state('index.fboAdmin', {
+            url: "/fboAdmin",
             templateUrl: "views/fbo-Clients/fboClients.html",
             controller: 'fboClientsController'
+        })
+        .state('index.flightDept', {
+            url: "/flightDept",
+            templateUrl: "views/flightDept/flightDept.html",
+            controller: 'flightDeptController'
         })
 }
 angular

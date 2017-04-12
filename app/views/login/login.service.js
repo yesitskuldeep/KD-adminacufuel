@@ -32,7 +32,7 @@
                 if(result.data.user.admin == true){
                   window.localStorage.setItem('loginId', result.data.id);
                   window.localStorage.setItem('loginData', JSON.stringify(result.data.userProfile));
-                  $state.go('index.dashboard');
+                  $state.go('index.fboAdmin');
                 }else{
                   localStorage.clear();
                   toastr.info("Unauthorized");
