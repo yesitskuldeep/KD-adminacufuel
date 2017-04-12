@@ -55,7 +55,7 @@
                                        <td class="client-link">{{client.user.companyName}}</td>
                                        <td> {{client.user.firstName}}</td>
                                        <td><i class="fa fa-flag"></i> {{client.user.lastName}}</td>
-                                       <td class="client-status"><span class="label label-primary">{{client.user.account.user.status}}</span></td>
+                                       <td class="client-status"><span ng-if="client.user.account.user.status == 'ACTIVE'" class="label label-primary">{{client.user.account.user.status}}</span><span ng-if="client.user.account.user.status == 'INACTIVE'" class="label label-danger">{{client.user.account.user.status}}</span><span ng-if="client.user.account.user.status == 'PENDING'" class="label label-default">{{client.user.account.user.status}}</span></td>
                                     </tr>
                                     
                                  </tbody>
@@ -72,7 +72,7 @@
                                        <td><a data-toggle="tab" href="#company-1" class="client-link">{{dept.user.companyName}}</a></td>
                                        <td>{{dept.user.firstName}}</td>
                                        <td><i class="fa fa-flag"></i> {{dept.user.lastName}}</td>
-                                       <td class="client-status"><span class="label label-primary">{{dept.user.account.user.status}}</span></td>
+                                       <td class="client-status"><span ng-if="dept.user.account.user.status == 'ACTIVE'" class="label label-primary">{{dept.user.account.user.status}}</span><span ng-if="dept.user.account.user.status == 'INACTIVE'" class="label label-danger">{{dept.user.account.user.status}}</span><span ng-if="dept.user.account.user.status == 'PENDING'" class="label label-default">{{dept.user.account.user.status}}</span></td>
                                     </tr>
                                  </tbody>
                               </table>
