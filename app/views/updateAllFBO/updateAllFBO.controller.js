@@ -17,9 +17,10 @@
         console.log(result)
         $scope.user = result;
         $scope.user.userTypeId = result.userType.id;
-        $scope.feature.accountId = result.account.id;
+        
         if(result.accountFeatureControl != null){
           $scope.feature = result.accountFeatureControl;
+          $scope.feature.accountId = result.account.id;
           console.log($scope.feature)
           if($scope.feature.essintaPosSystem == true){
             $scope.essAccountId = false;
@@ -29,6 +30,8 @@
             delete $scope.feature.essintaAccountUid;
             $("#esAccId").css({ opacity: 0.5 });
           }
+        }else{
+          $scope.feature.accountId = result.account.id;
         }
         
         UpdateAllFBO.getNotes(userProfileID).then(function(response) {
@@ -57,7 +60,7 @@
       $scope.userData = function(){
         console.log($scope.user.userTypeId)
 
-          if($scope.user.account.user.status == 'ACTIVE'){
+          if($scope.status == true){
             $scope.user.status = 'active';
           }else{
             $scope.user.status = 'inactive';
@@ -80,9 +83,6 @@
             
             UpdateAllFBO.updatefeatureControl(updatefeatureControlData).then(function(response) {
               console.log(response)
-              toastr.success(''+response.success+'', {
-                closeButton: true
-              })
             })
           })
       }

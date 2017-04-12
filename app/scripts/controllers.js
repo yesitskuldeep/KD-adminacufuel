@@ -6,7 +6,7 @@
 /**
  * MainCtrl - controller
  */
-function MainCtrl($scope, $location, $state, LoginService) {
+function MainCtrl($scope, $location, $state, $rootScope, LoginService) {
 
     $scope.userName = 'Dylan Goodwin';
     $scope.helloText = 'Welcome in SeedProject';
@@ -17,6 +17,17 @@ function MainCtrl($scope, $location, $state, LoginService) {
     	LoginService.logout();
     	$state.go('login')
     }
+    console.log($location)
+    $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
+        console.log(next)
+        if(next.name == "index.fboAdmin" || next.name == "index.dashboard" || next.name == "index.updateFBO"){
+            $scope.headingName = 'FBO Admin Conductor';
+        }else if(next.name == "index.flightDept" || next.name == "index.flight" || next.name == "index.updateFBODept"){
+            $scope.headingName = 'Flight Department Admin Conductor';
+        }else{
+            $scope.headingName = '';
+        }
+    })
 };
 
 

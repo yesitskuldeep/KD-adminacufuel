@@ -72,7 +72,7 @@
       $scope.userData = function(){
         console.log($scope.user.userTypeId)
 
-          if($scope.user.account.user.status == 'ACTIVE'){
+          if($scope.status == true){
             $scope.user.status = 'active';
           }else{
             $scope.user.status = 'inactive';
