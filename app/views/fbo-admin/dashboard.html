@@ -1,7 +1,8 @@
 </div>
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-8">
-            <h2>Tellus Institute</h2>
+            <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">Tellus Institute</h2>
+            <div style="margin-top: 20px;" ng-hide="showCompany"><input type="text" style="width:50%;" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control"></div>
         </div>
         <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
             <button type="button" class="btn btn-default btn-sm" ui-sref="index.fboAdmin">Cancel</button>

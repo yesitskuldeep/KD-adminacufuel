@@ -11,6 +11,11 @@
           });
 
       });
+      $scope.showCompany = true;
+      $scope.editName = function(){
+        $scope.showCompany = false;
+
+      }
       $scope.feature = {};
       var userProfileID = $stateParams.id;
       UpdateAllFBO.getALlFBOData(userProfileID).then(function(result) {
@@ -59,7 +64,15 @@
 
       $scope.userData = function(){
         console.log($scope.user.userTypeId)
-
+        if($scope.user.email == undefined || $scope.user.email == null){
+          toastr.error('Please enter your email first', {
+            closeButton: true
+          })
+        }else if($scope.user.firstName == undefined || $scope.user.firstName == null){
+          toastr.error('Please enter your First Name', {
+            closeButton: true
+          })
+        }else{
           if($scope.status == true){
             $scope.user.status = 'active';
           }else{
@@ -85,6 +98,7 @@
               console.log(response)
             })
           })
+        }
       }
 
   });

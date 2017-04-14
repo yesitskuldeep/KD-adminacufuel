@@ -1,9 +1,10 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
-     <div class="col-lg-2">
-        <h2>{{user.companyName}}</h2>
+     <div class="col-lg-3">
+        <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">{{user.companyName}}</h2>
+        <div style="margin-top: 20px;" ng-hide="showCompany"><input type="text" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control"></div>
     </div>
-    <div class="col-lg-4" style="margin-top: 20px;">
+    <div class="col-lg-3" style="margin-top: 20px;">
         <button type="button" class="btn btn-w-m btn-danger" ng-click="deleteData()">Delete Account</button>
     </div>
     <div class="col-lg-6" style="margin-top: 20px; text-align: right;">
@@ -117,7 +118,7 @@
                                         </select>
                                       </td>
                                       <td style="width: 30%">
-                                        <select class="form-control" ng-model="aircraft.model">
+                                        <select class="form-control" ng-model="aircraft.model" ng-change="getSize()">
                                            <option ng-repeat="model in aircraftModalList">{{model}}</option>
                                         </select>
                                       </td>
@@ -212,7 +213,7 @@
                                         </select>
                                       </td>
                                       <td style="width: 30%">
-                                        <select class="form-control" ng-model="aircraft.model">
+                                        <select class="form-control" ng-model="aircraft.model" ng-change="getSize()">
                                            <option ng-repeat="model in aircraftModalList">{{model}}</option>
                                         </select>
                                       </td>

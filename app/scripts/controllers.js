@@ -12,6 +12,9 @@ function MainCtrl($scope, $location, $state, $rootScope, LoginService) {
     $scope.helloText = 'Welcome in SeedProject';
     $scope.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
     
+    LoginService.getActiveUser().then(function(result) {
+        $scope.pendingUser = result;
+    })
     $scope.logout = function(){
     	console.log("Called")
     	LoginService.logout();

@@ -4,10 +4,24 @@
   angular.module('acuefuel')
 
 	.controller('FlightDeptController', function ($scope, $uibModal, FBOFlight) {
+      $scope.showCompany = true;
+      $scope.editName = function(){
+        $scope.showCompany = false;
+
+      }
       $scope.data = {};
       $scope.user = {};
       $scope.aircraft = {};
       $scope.userData = function(){
+        if($scope.user.email == undefined || $scope.user.email == null){
+          toastr.error('Please enter your email first', {
+            closeButton: true
+          })
+        }else if($scope.user.firstName == undefined || $scope.user.firstName == null){
+          toastr.error('Please enter your First Name', {
+            closeButton: true
+          })
+        }else{
           if($scope.status == true){
             $scope.user.status = 'active';
           }else{
@@ -24,11 +38,13 @@
             toastr.success('Created Successfully', {
               closeButton: true
             })
+            $state.go('index.flightDept');
           }, function (err) {
               toastr.error('Error in registering', {
                 closeButton: true
               })
           });
+        }
       }
 
       $scope.data.cardType = 'creditCard';
@@ -60,25 +76,32 @@
           FBOFlight.getModal($scope.aircraft.make).then(function(result) {
             $scope.aircraftModalList = result;
             $scope.aircraft.model = $scope.aircraftModalList[0];
-              
+              FBOFlight.getAircraftSize($scope.aircraft.make, $scope.aircraft.model).then(function(result) {
+                $scope.aircraftSizeList = result;
+                $scope.aircraft.size = $scope.aircraftSizeList[0];
+              })
           })
-            
-        })
-
-        FBOFlight.getAircraftSize().then(function(result) {
-          $scope.aircraftSizeList = result;
-          $scope.aircraft.size = $scope.aircraftSizeList[0];
             
         })
       }
       
 
       $scope.getModal = function(){
-        var modelId = $scope.aircraft.make
-        FBOFlight.getModal(modelId).then(function(result) {
+        var makeId = $scope.aircraft.make;
+        FBOFlight.getModal(makeId).then(function(result) {
           $scope.aircraftModalList = result;
           $scope.aircraft.model = $scope.aircraftModalList[0];
-            
+            FBOFlight.getAircraftSize(makeId, $scope.aircraft.model).then(function(result) {
+              $scope.aircraftSizeList = result;
+              $scope.aircraft.size = $scope.aircraftSizeList[0];
+            })
+        })
+      }
+
+      $scope.getSize = function(){
+        FBOFlight.getAircraftSize($scope.aircraft.make, $scope.aircraft.model).then(function(result) {
+          $scope.aircraftSizeList = result;
+          $scope.aircraft.size = $scope.aircraftSizeList[0];
         })
       }
 
@@ -87,7 +110,7 @@
           toastr.error('Please Add Contact Information', {
             closeButton: true
           })
-          $('#myModal4').modal('hide');
+          $('#myModal4').modal('show');
         }else{
           $('#myModal4').modal('show');
         }
@@ -97,12 +120,9 @@
       $scope.aircraftData.aircraftList = [];
       $scope.getCraftList = [];
       $scope.addAircraft = function(){
-        console.log($scope.aircraft.accountId)
         $scope.aircraftData.aircraftList.push($scope.aircraft);
-        console.log($scope.aircraftData.aircraftList)
         if ($scope.getCraftList.indexOf($scope.aircraft) == -1) {
             $scope.getCraftList.push($scope.aircraft);
-            
         }
         
         FBOFlight.addAircraft($scope.aircraftData).then(function(result) {
@@ -111,7 +131,13 @@
           toastr.success('Created Successfully', {
             closeButton: true
           })
-        })
+        }, function (err) {
+            toastr.error('Error in Adding Aircraft', {
+              closeButton: true
+            })
+            $('#myModal4').modal('hide');
+            $scope.getCraftList.splice($scope.aircraft);
+        });
         
       }
 

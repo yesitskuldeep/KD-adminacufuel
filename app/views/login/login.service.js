@@ -62,6 +62,20 @@
           })
           return deferred.promise;
         }
+
+        this.getActiveUser = function() {
+
+          var deferred = $q.defer();
+          $http({
+              method : 'GET',
+              url : BE.url +'/user/waitingForAuth/',
+              headers : {'Content-Type': 'application/json'}
+          })
+          .success(function(result) {
+              deferred.resolve(result);
+          })
+          return deferred.promise;
+        }
    }
 
 })();

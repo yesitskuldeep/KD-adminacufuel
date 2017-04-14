@@ -51,11 +51,11 @@
           return deferred.promise;
         }
 
-        this.getAircraftSize = function(){
+        this.getAircraftSize = function(makeId, modelId){
           var deferred = $q.defer();
           $http({
               method : 'GET',
-              url : BE.url +'/fuelerlinx/acufuel/getAircraftSize',
+              url : BE.url +'/fuelerlinx/acufuel/getAircraftSize/' +makeId + '/' +modelId,
               headers : {'Content-Type': 'application/json'},
           })
           .success(function(result) {
@@ -87,6 +87,8 @@
           })
           .success(function(result) {
               deferred.resolve(result);
+          }).error(function(error) {
+              deferred.reject(error);
           })
           return deferred.promise;
         }

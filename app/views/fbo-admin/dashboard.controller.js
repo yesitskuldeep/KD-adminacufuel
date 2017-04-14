@@ -3,14 +3,14 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('DashboardController', function($scope, FBOAdmin) {
+	.controller('DashboardController', function($scope, $state, FBOAdmin) {
 	    $(document).ready(function(){
           $('.i-checks').iCheck({
               checkboxClass: 'icheckbox_square-green',
               radioClass: 'iradio_square-green',
           });
       });
-    
+      $scope.showCompany = true;
     	$scope.userName = 'Dylan Goodwin';
       $scope.essAccountId = true;
       $("#esAccId").css({ opacity: 0.5 });
@@ -25,8 +25,15 @@
       $scope.feature.posAccountingIntegration = false;
       $scope.feature.posVeederRootIntegration = false;
       $scope.userData = function(){
-          console.log("daadada", $scope.feature)
-
+        if($scope.user.email == undefined || $scope.user.email == null){
+          toastr.error('Please enter your email first', {
+            closeButton: true
+          })
+        }else if($scope.user.firstName == undefined || $scope.user.firstName == null){
+          toastr.error('Please enter your First Name', {
+            closeButton: true
+          })
+        }else{
           if($scope.status == true){
             $scope.user.status = 'active';
           }else{
@@ -50,11 +57,14 @@
               console.log(response)
                 
             })
+            $state.go('index.fboAdmin');
           }, function (err) {
               toastr.error('Error in registering', {
                 closeButton: true
               })
           });
+        }
+          
       }
 
       $scope.enableEssId = function(){
@@ -66,6 +76,11 @@
             delete $scope.feature.essintaAccountUid;
             $("#esAccId").css({ opacity: 0.5 });
           }
+      }
+
+      $scope.editName = function(){
+        $scope.showCompany = false;
+
       }
 
     });
