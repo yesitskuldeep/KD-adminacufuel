@@ -10,7 +10,6 @@
               radioClass: 'iradio_square-green',
           });
       });
-      $scope.showCompany = true;
     	$scope.userName = 'Dylan Goodwin';
       $scope.essAccountId = true;
       $("#esAccId").css({ opacity: 0.5 });
@@ -76,11 +75,6 @@
             delete $scope.feature.essintaAccountUid;
             $("#esAccId").css({ opacity: 0.5 });
           }
-      }
-
-      $scope.editName = function(){
-        $scope.showCompany = false;
-
       }
 
     });

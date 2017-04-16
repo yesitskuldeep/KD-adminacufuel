@@ -4,11 +4,6 @@
   angular.module('acuefuel')
 
 	.controller('FlightDeptController', function ($scope, $uibModal, FBOFlight) {
-      $scope.showCompany = true;
-      $scope.editName = function(){
-        $scope.showCompany = false;
-
-      }
       $scope.data = {};
       $scope.user = {};
       $scope.aircraft = {};
@@ -110,7 +105,7 @@
           toastr.error('Please Add Contact Information', {
             closeButton: true
           })
-          $('#myModal4').modal('show');
+          $('#myModal4').modal('hide');
         }else{
           $('#myModal4').modal('show');
         }

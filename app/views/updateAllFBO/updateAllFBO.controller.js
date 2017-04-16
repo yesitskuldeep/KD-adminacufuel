@@ -11,11 +11,7 @@
           });
 
       });
-      $scope.showCompany = true;
-      $scope.editName = function(){
-        $scope.showCompany = false;
-
-      }
+      
       $scope.feature = {};
       var userProfileID = $stateParams.id;
       UpdateAllFBO.getALlFBOData(userProfileID).then(function(result) {

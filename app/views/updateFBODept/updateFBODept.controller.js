@@ -4,11 +4,7 @@
   angular.module('acuefuel')
 
 	.controller('updateFBODeptController', function($scope, $stateParams, UpdateAllFBODept, UpdateAllFBO, FBOFlight) {
-      $scope.showCompany = true;
-      $scope.editName = function(){
-        $scope.showCompany = false;
-
-      }
+      
       $scope.showPayments = true;
       $scope.aircraft = {};
       $scope.updateData = {};
