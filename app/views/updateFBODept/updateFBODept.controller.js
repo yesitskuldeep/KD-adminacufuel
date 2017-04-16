@@ -3,7 +3,7 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('updateFBODeptController', function($scope, $stateParams, UpdateAllFBODept, UpdateAllFBO, FBOFlight) {
+	.controller('updateFBODeptController', function($scope, $stateParams, $state, UpdateAllFBODept, UpdateAllFBO, FBOFlight) {
       
       $scope.showPayments = true;
       $scope.aircraft = {};
@@ -98,6 +98,7 @@
                 closeButton: true
             })
           })
+          $state.go('index.flightDept');
         }
       }
 

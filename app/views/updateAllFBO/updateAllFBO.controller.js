@@ -3,7 +3,7 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('updateAllFBOController', function($scope, $stateParams, UpdateAllFBO) {
+	.controller('updateAllFBOController', function($scope, $stateParams, $state, UpdateAllFBO) {
 	    $(document).ready(function(){
           $('.i-checks').iCheck({
               checkboxClass: 'icheckbox_square-green',
@@ -93,6 +93,7 @@
             UpdateAllFBO.updatefeatureControl(updatefeatureControlData).then(function(response) {
               console.log(response)
             })
+            $state.go('index.fboAdmin');
           })
         }
       }
