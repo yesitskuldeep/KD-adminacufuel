@@ -9,6 +9,7 @@
               checkboxClass: 'icheckbox_square-green',
               radioClass: 'iradio_square-green',
           });
+          $('.fboadmin').addClass('active');
       });
     	$scope.userName = 'Dylan Goodwin';
       $scope.essAccountId = true;

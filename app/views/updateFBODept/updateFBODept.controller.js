@@ -4,7 +4,9 @@
   angular.module('acuefuel')
 
 	.controller('updateFBODeptController', function($scope, $stateParams, $state, UpdateAllFBODept, UpdateAllFBO, FBOFlight) {
-      
+      $(document).ready(function(){
+        $('.fboflight').addClass('active');
+      });
       $scope.showPayments = true;
       $scope.aircraft = {};
       $scope.updateData = {};

@@ -4,6 +4,9 @@
   angular.module('acuefuel')
 
 	.controller('FlightDeptController', function ($scope, $uibModal, FBOFlight) {
+      $(document).ready(function(){
+        $('.fboflight').addClass('active');
+      });
       $scope.data = {};
       $scope.user = {};
       $scope.aircraft = {};
