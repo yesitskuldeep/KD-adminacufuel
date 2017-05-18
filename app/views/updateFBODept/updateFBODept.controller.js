@@ -33,6 +33,10 @@
       function getCrafts(){
         UpdateAllFBODept.getAircrafts(userProfileID).then(function(response) {
           $scope.getCraftList = response;
+          for(var i=0;i<$scope.getCraftList.length;i++){
+            $scope.getCraftList[i].sizeId = $scope.getCraftList[i].userAircraftSize.id;
+            $scope.getCraftList[i].size = $scope.getCraftList[i].userAircraftSize.size;
+          }
         })
       }
       
@@ -115,7 +119,7 @@
 
             FBOFlight.getAircraftSize($scope.aircraft.make, $scope.aircraft.model).then(function(result) {
               $scope.aircraftSizeList = result;
-              $scope.aircraft.size = $scope.aircraftSizeList[0];
+              $scope.aircraft.sizeId = $scope.aircraftSizeList[0].aircraftSize.id;
                 
             })
           })
@@ -131,7 +135,7 @@
 
           FBOFlight.getAircraftSize(makeId, $scope.aircraft.model).then(function(result) {
             $scope.aircraftSizeList = result;
-            $scope.aircraft.size = $scope.aircraftSizeList[0];
+            $scope.aircraft.sizeId = $scope.aircraftSizeList[0].aircraftSize.id;
           })
         })
       }
@@ -139,13 +143,16 @@
       $scope.getSize = function(){
         FBOFlight.getAircraftSize($scope.aircraft.make, $scope.aircraft.model).then(function(result) {
           $scope.aircraftSizeList = result;
-          $scope.aircraft.size = $scope.aircraftSizeList[0];
+          console.log($scope.aircraftSizeList)
+          $scope.aircraft.sizeId = $scope.aircraftSizeList[0].aircraftSize.id;
+          console.log($scope.aircraft.sizeId)
         })
       }
 
       $scope.aircraftData = {};
       $scope.aircraftData.aircraftList = [];
       $scope.addAircraft = function(){
+        console.log($scope.aircraft)
         $scope.aircraftData.aircraftList.push($scope.aircraft);
         
         FBOFlight.addAircraft($scope.aircraftData).then(function(result) {
@@ -162,7 +169,7 @@
             $('#myModal4').modal('hide');
             $scope.getCraftList.splice($scope.aircraft);
         });
-      }
+       }
 
       $scope.closeModal = function(){
         $("#myModal5").modal('hide');
@@ -179,7 +186,8 @@
           $scope.aircraftModalList = result;
           FBOFlight.getAircraftSize($scope.aircraft.make, $scope.aircraft.model).then(function(result) {
             $scope.aircraftSizeList = result;
-              
+            console.log($scope.aircraftSizeList)
+            $scope.aircraft.sizeId = $scope.aircraftSizeList[0].aircraftSize.id;
           })
         })
       }
@@ -192,7 +200,7 @@
         $scope.updateAircraftData.id = updateAircraft.id;
         $scope.updateAircraftData.make = updateAircraft.make;
         $scope.updateAircraftData.model = updateAircraft.model;
-        $scope.updateAircraftData.size = updateAircraft.size;
+        $scope.updateAircraftData.sizeId = updateAircraft.sizeId;
         $scope.updateAircraftData.tail = updateAircraft.tail;
         $scope.updateAircraftData.accountId = updateAircraft.accountId;
         console.log($scope.updateAircraftData)
@@ -203,6 +211,7 @@
         UpdateAllFBODept.updateAircraft($scope.updatecraftData).then(function(result) {
           $('#myModal5').modal('hide');
           $scope.resetData();
+          getCrafts();
           toastr.success('Updated Successfully', {
             closeButton: true
           })

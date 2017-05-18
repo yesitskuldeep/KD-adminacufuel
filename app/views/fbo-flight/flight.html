@@ -1,13 +1,79 @@
-</div>
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-8">
-            <!-- <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">Tellus Institute</h2> -->
-            <div style="margin-top: 20px;"><input type="text" style="width:50%;" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control"></div>
-        </div>
-        <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
-            <button type="button" class="btn btn-default btn-sm" ui-sref="index.flightDept">Cancel</button>
-            <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
-        </div>
+<style>
+   .button1 {
+     display: inline-block;
+     height: 35px;
+     line-height: 35px;
+     padding-right: 15px;
+     padding-left: 50px;
+     position: relative;
+     background-color:rgb(41,127,184);
+     color:rgb(255,255,255);
+     text-decoration: none;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     margin-bottom: 15px;
+     border: 0;
+     
+     
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+      -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true)";zoom:1;
+      filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true);
+
+        -moz-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+        -webkit-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+        box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+        -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
+      filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
+   }
+
+   .button1 span {
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 35px;
+     background-color:rgba(0,0,0,0.5);
+     
+     -webkit-border-top-left-radius: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-bottomleft: 5px;
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+   border-right: 1px solid  rgba(0,0,0,0.15);
+   }
+
+   .button1:hover span, .button1.active span {
+     background-color:rgb(0,102,26);
+     border-right: 1px solid  rgba(0,0,0,0.3);
+   }
+
+   .button1:active {
+     margin-top: 2px;
+     margin-bottom: 13px;
+
+     -moz-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+   -webkit-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+   box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+   -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true)";
+   filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true);
+   }
+
+   .button1.turquoise {
+     background: #449d44;
+   }
+
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <!-- <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">Tellus Institute</h2> -->
+        <div style="margin-top: 20px;"><input type="text" style="width:50%;" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control"></div>
+    </div>
+    <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
+        <button type="button" class="btn btn-default btn-sm" ui-sref="index.flightDept">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -80,7 +146,7 @@
           <div class="ibox float-e-margins">
               <div class="ibox-title">
                 <h5>Aircraft List</h5>
-                <div class="pull-right">
+                <!-- <div class="pull-right">
                   <button type="button" class="btn btn-primary btn-sm" ng-click="openModal()">+ Add</button>
                 </div>
                 <div class="clearfix"></div>
@@ -89,9 +155,7 @@
                         <div class="modal-content animated fadeIn">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                <!-- <i class="fa fa-clock-o modal-icon"></i> -->
                                 <h4 class="modal-title">Add Aircraft</h4>
-                                <!-- <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small> -->
                             </div>
                             <div class="modal-body" style="padding: 15px;">
                                 <table class="table table-bordered table-hover table-striped">
@@ -133,11 +197,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
               </div>
               <div class="ibox-content">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-hover table-striped">
+                  <!-- <table class="table table-bordered table-hover table-striped">
                     <thead>
                       <tr>
                         <th>Tail</th>
@@ -168,8 +232,48 @@
                         </td>
                       </tr>
                     </tbody>
+                  </table> -->
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <!-- <th><input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" /></th> -->
+                            <th>Tail</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="aircraftData in aircraftDetails track by $index">
+                            <!-- <td>
+                                <input type="checkbox" ng-model="aircraftData.selected"/>
+                            </td> -->
+                            <td style="width: 20%">
+                                <input type="text" class="form-control" ng-model="aircraftData.tail" required/>
+                            </td>
+                            <td style="width: 20%">
+                                <select class="form-control" ng-model="aircraftData.make" ng-change="getModal(aircraftData.make, $index)">
+                                  <option ng-repeat="make in aircraftMakeList">{{make}}</option>
+                                </select>
+                            </td>
+                            <td style="width: 20%">
+                                <select class="form-control" ng-model="aircraftData.model" ng-change="getSize(aircraftData.model, $index)">
+                                    <option ng-repeat="model in aircraftData.aircraftModalList">{{model}}</option>
+                                </select>
+                            </td>
+                            <td style="width: 20%">
+                                <select class="form-control" ng-model="aircraftData.sizeId" ng-options="size.aircraftSize.id as size.aircraftSize.size for size in aircraftData.aircraftSizeList"></select>
+                                <!-- <select class="form-control" ng-model="aircraftData.size">
+                                  <option ng-repeat="size in aircraftData.aircraftSizeList">{{size}}</option>
+                                </select> -->
+                            </td>
+                        </tr>
+                      </tbody>
                   </table>
                 </div>
+                    <div class="col-xs-12" style="margin-bottom: 50px;margin-top: 10px;">
+                       <button ng-click="addNew()" class="button1 turquoise pull-right"><span>+</span>Add Aircraft</button>
+                    </div>
                      <div class="clearfix"></div>
                   </div>
                </div>

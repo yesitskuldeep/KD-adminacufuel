@@ -59,7 +59,7 @@
             })
             $state.go('index.fboAdmin');
           }, function (err) {
-              toastr.error('Error in registering', {
+              toastr.error('Error in registeration', {
                 closeButton: true
               })
           });
