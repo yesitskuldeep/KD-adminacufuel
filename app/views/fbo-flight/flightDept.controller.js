@@ -3,13 +3,25 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('FlightDeptController', function ($scope, $uibModal, $state, FBOFlight) {
+	.controller('FlightDeptController', function ($scope, $uibModal, $state, FBOFlight, FBOAdmin) {
       $(document).ready(function(){
         $('.fboflight').addClass('active');
       });
       $scope.data = {};
       $scope.user = {};
       $scope.aircraft = {};
+
+      $scope.checkUsername = function(){
+        FBOAdmin.checkUsernameEmail($scope.user.email).then(function(status) {
+          console.log(status)
+          if(status != 200){
+            toastr.error('This email has alreay taken', {
+              closeButton: true
+            })
+          }
+        })
+      }
+
       $scope.userData = function(){
         
         if($scope.user.email == undefined || $scope.user.email == null){

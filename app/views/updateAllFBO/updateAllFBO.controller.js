@@ -3,7 +3,7 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('updateAllFBOController', function($scope, $stateParams, $state, UpdateAllFBO) {
+	.controller('updateAllFBOController', function($scope, $stateParams, $state, UpdateAllFBO, FBOAdmin) {
 	    $(document).ready(function(){
           $('.i-checks').iCheck({
               checkboxClass: 'icheckbox_square-green',
@@ -57,6 +57,17 @@
             delete $scope.feature.essintaAccountUid;
             $("#esAccId").css({ opacity: 0.5 });
           }
+      }
+
+      $scope.checkUsername = function(){
+        FBOAdmin.checkUsernameEmail($scope.user.email).then(function(status) {
+          console.log(status)
+          if(status != 200){
+            toastr.error('This email has alreay taken', {
+              closeButton: true
+            })
+          }
+        })
       }
 
       $scope.userData = function(){

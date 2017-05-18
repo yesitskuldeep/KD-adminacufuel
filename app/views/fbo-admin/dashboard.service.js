@@ -37,6 +37,21 @@
           })
           return deferred.promise;
         }
+
+        this.checkUsernameEmail = function(email){
+          var deferred = $q.defer();
+          $http({
+              method : 'GET',
+              url : BE.url +'/account/user/checkUserNameAvail/'+email,
+              headers : {'Content-Type': 'application/json'},
+          })
+          .then(function (result){
+              deferred.resolve(result.status);
+          },function (result){
+              deferred.resolve(result.status);
+          })
+          return deferred.promise;
+        }
    }
 
 })();

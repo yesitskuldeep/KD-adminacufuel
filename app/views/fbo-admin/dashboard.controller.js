@@ -24,6 +24,18 @@
       $scope.feature.amstatIntegration = false;
       $scope.feature.posAccountingIntegration = false;
       $scope.feature.posVeederRootIntegration = false;
+
+      $scope.checkUsername = function(){
+        FBOAdmin.checkUsernameEmail($scope.user.email).then(function(status) {
+          console.log(status)
+          if(status != 200){
+            toastr.error('This email has alreay taken', {
+              closeButton: true
+            })
+          }
+        })
+      }
+
       $scope.userData = function(){
         if($scope.user.email == undefined || $scope.user.email == null){
           toastr.error('Please enter your email first', {

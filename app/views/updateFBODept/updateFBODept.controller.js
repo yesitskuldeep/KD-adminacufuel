@@ -3,7 +3,7 @@
  //Load controller
   angular.module('acuefuel')
 
-	.controller('updateFBODeptController', function($scope, $stateParams, $state, UpdateAllFBODept, UpdateAllFBO, FBOFlight) {
+	.controller('updateFBODeptController', function($scope, $stateParams, $state, UpdateAllFBODept, UpdateAllFBO, FBOFlight, FBOAdmin) {
       $(document).ready(function(){
         $('.fboflight').addClass('active');
       });
@@ -74,6 +74,17 @@
 
       $scope.reset = function(){
         cardData.paymentMethodList = [];
+      }
+
+      $scope.checkUsername = function(){
+        FBOAdmin.checkUsernameEmail($scope.user.email).then(function(status) {
+          console.log(status)
+          if(status != 200){
+            toastr.error('This email has alreay taken', {
+              closeButton: true
+            })
+          }
+        })
       }
 
       $scope.userData = function(){
