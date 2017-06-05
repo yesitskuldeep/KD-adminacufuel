@@ -10,6 +10,9 @@
       $scope.data = {};
       $scope.user = {};
       $scope.aircraft = {};
+      $scope.user.companyName = '';
+      $scope.user.email = '';
+      $scope.user.password = '';
 
       $scope.checkUsername = function(){
         FBOAdmin.checkUsernameEmail($scope.user.email).then(function(status) {
@@ -22,16 +25,34 @@
         })
       }
 
+      $scope.comnayNameInvalid = false;
+      $scope.emailInvalid = false;
+      $scope.passwordInvalid = false;
+
+      $scope.companyNameValid = function(){
+        $scope.comnayNameInvalid = false;
+        $('.companyNameError').removeClass('customErrorInput');
+      }
+      $scope.emailValid = function(){
+        $scope.emailInvalid = false;
+        $('.emailIdError').removeClass('customErrorInput');
+      }
+      $scope.passwordValid = function(){
+        $scope.passwordInvalid = false;
+        $('.invalidPassword').removeClass('customErrorInput');
+      }
+
       $scope.userData = function(){
-        
-        if($scope.user.email == undefined || $scope.user.email == null){
-          toastr.error('Please enter your email first', {
-            closeButton: true
-          })
-        }else if($scope.user.firstName == undefined || $scope.user.firstName == null){
-          toastr.error('Please enter your First Name', {
-            closeButton: true
-          })
+
+        if ($scope.user.companyName == '') {
+          $scope.comnayNameInvalid = true;
+          $('.companyNameError').addClass('customErrorInput');
+        }else if ($scope.user.email == '') {
+          $scope.emailInvalid = true;
+          $('.emailIdError').addClass('customErrorInput');
+        }else if ($scope.user.password == '') {
+          $scope.passwordInvalid = true;
+          $('.invalidPassword').addClass('customErrorInput');
         }else{
           if($scope.status == true){
             $scope.user.status = 'active';
