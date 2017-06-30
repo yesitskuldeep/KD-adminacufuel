@@ -22,10 +22,11 @@
               headers : {'Content-Type': undefined},
               data : fd
           })
-          .success(function(result) {
+         .then(function (result){
               deferred.resolve(result);
-          }).error(function(error){
-            deferred.reject(error);
+          },function (result){
+            console.log(result)
+              deferred.resolve(result);
           })
           return deferred.promise;
         }
@@ -46,10 +47,11 @@
               headers : {'Content-Type': undefined},
               data : fd
           })
-          .success(function(result) {
+           .then(function (result){
               deferred.resolve(result);
-          }).error(function(error){
-            deferred.reject(error);
+          },function (result){
+            console.log(result)
+              deferred.resolve(result);
           })
           return deferred.promise;
         }
@@ -66,14 +68,15 @@
           $http({
               method : 'POST',
               transformRequest: angular.identity,                    
-              url : BE.url +'/airport/upload/updateCountries',
+              url : BE.url +'/airport/upload/countries',
               headers : {'Content-Type': undefined},
               data : fd
           })
-          .success(function(result) {
+          .then(function (result){
               deferred.resolve(result);
-          }).error(function(error){
-            deferred.reject(error);
+          },function (result){
+            console.log(result)
+              deferred.resolve(result);
           })
           return deferred.promise;
         }
@@ -94,13 +97,16 @@
               headers : {'Content-Type': undefined},
               data : fd
           })
-          .success(function(result) {
+          .then(function (result){
               deferred.resolve(result);
-          }).error(function(error){
-            deferred.reject(error);
+          },function (result){
+            console.log(result)
+              deferred.resolve(result);
           })
           return deferred.promise;
         }
+        
+          
 
         this.updateFBOHandler = function(data) {
 
@@ -118,13 +124,47 @@
               headers : {'Content-Type': undefined},
               data : fd
           })
-          .success(function(result) {
+          .then(function (result){
               deferred.resolve(result);
-          }).error(function(error){
-            deferred.reject(error);
+          },function (result){
+            console.log(result)
+              deferred.resolve(result);
           })
           return deferred.promise;
         }
+
+        this.getUploadProgress = function(filetype) {
+
+            var deferred = $q.defer();
+          $http({
+              method : 'GET',
+              url : BE.url +'/airport/export/records/'+filetype,
+          })
+          .then(function (result){
+              deferred.resolve(result.data);
+          },function (result){
+              deferred.resolve(result.data);
+          })
+          return deferred.promise;
+        }
+
+        this.getAllUploadProgress = function(filetype) {
+
+            var deferred = $q.defer();
+          $http({
+              method : 'GET',
+              url : BE.url +'/airport/export/records',
+          })
+          .then(function (result){
+              deferred.resolve(result.data);
+          },function (result){
+              deferred.resolve(result.data);
+          })
+          return deferred.promise;
+        }
+
+        
+        
    }
 
 })();
