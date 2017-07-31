@@ -4,13 +4,10 @@
         <!-- <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">{{user.companyName}}</h2> -->
         <div style="margin-top: 20px;"><input type="text" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control"></div>
     </div>
-    <div class="col-lg-2">
-        <div style="margin-top: 20px;"><input type="text" placeholder="Enter ICAO" ng-model="user.icao" class="form-control"></div>
-    </div>
     <div class="col-lg-3" style="margin-top: 20px;">
         <button type="button" class="btn btn-w-m btn-danger" ng-click="deleteData()">Delete Account</button>
     </div>
-    <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
+    <div class="col-lg-6" style="margin-top: 20px; text-align: right;">
         <button type="button" class="btn btn-default btn-sm" ui-sref="index.flightDept">Cancel</button>
         <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
     </div>
