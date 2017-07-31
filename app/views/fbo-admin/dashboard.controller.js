@@ -18,6 +18,7 @@
       $scope.user.companyName = '';
       $scope.user.email = '';
       $scope.user.password = '';
+      $scope.user.icao = '';
       $scope.feature = {};
       $scope.feature.level = 'silver';
       $scope.feature.essintaPosSystem = false;
@@ -41,6 +42,7 @@
       $scope.comnayNameInvalid = false;
       $scope.emailInvalid = false;
       $scope.passwordInvalid = false;
+      $scope.icaoInvalid = false;
 
       $scope.companyNameValid = function(){
         $scope.comnayNameInvalid = false;
@@ -54,12 +56,19 @@
         $scope.passwordInvalid = false;
         $('.invalidPassword').removeClass('customErrorInput');
       }
+      $scope.icaoValid = function(){
+        $scope.icaoInvalid = false;
+        $('.icaoNameError').removeClass('customErrorInput');
+      }
 
       $scope.userData = function(){
         console.log('$scope.user', $scope.user);
         if ($scope.user.companyName == '') {
           $scope.comnayNameInvalid = true;
           $('.companyNameError').addClass('customErrorInput');
+        }else if ($scope.user.icao == '') {
+            $scope.icaoInvalid = true;
+            $('.icaoNameError').addClass('customErrorInput');
         }else if ($scope.user.email == '') {
           $scope.emailInvalid = true;
           $('.emailIdError').addClass('customErrorInput');
@@ -75,7 +84,7 @@
           $scope.user.username = $scope.user.email;
           $scope.user.userType = 'fbo';
           console.log($scope.user)
-          var formdata = "companyName=" + $scope.user.companyName + "&email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
+          var formdata = "companyName=" + $scope.user.companyName + "&icao=" + $scope.user.icao + "&email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
           FBOAdmin.registerUser(formdata).then(function(result) {
             toastr.success('Created Successfully', {
                 closeButton: true

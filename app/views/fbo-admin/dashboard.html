@@ -17,16 +17,24 @@
 
 </div>
     <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-8">
+        <div class="col-lg-4">
             <!-- <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">Tellus Institute</h2> -->
-            <div style="margin-top: 20px;">
-                <input type="text" style="width:50%; float: left;" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control companyNameError" ng-keyup="companyNameValid()">
+            <div style="margin: 5px;" class="form-group">
+            	<label>Company Name</label> 
+                <input type="text" style="width:80%; float: left;" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control companyNameError" ng-keyup="companyNameValid()">
                 <span class="redAstrick" style="margin: 0 5px;">*</span>
-                <label class="customErrorMessage" ng-show="comnayNameInvalid" style="margin-top: 7px;">This field is required.</label>
+                <label class="customErrorMessage" ng-show="comnayNameInvalid">This field is required.</label>
                 <div class="clearfix"></div>
             </div>
         </div>
-        <div class="col-lg-4" style="margin-top: 20px; text-align: right;">
+        <div class="col-lg-4" >
+            <div style="margin: 5px;" class="form-group">
+            	<label>ICAO Code  <span class="redAstrick" style="margin: 0 5px;">*</span></label> <label class="customErrorMessage" ng-show="icaoInvalid">This field is required.</label>
+                <input type="text" style="width:50%" placeholder="Enter ICAO" ng-model="user.icao" class="form-control icaoNameError" ng-keyup="icaoValid()">
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-lg-4" style="margin-top: 25px; text-align: right;">
             <button type="button" class="btn btn-default btn-sm" ui-sref="index.fboAdmin">Cancel</button>
             <button type="button" class="btn btn-primary btn-sm" ng-click="userData()">Save Changes</button>
         </div>
