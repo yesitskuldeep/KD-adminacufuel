@@ -80,7 +80,15 @@
           toastr.error('Please enter your First Name', {
             closeButton: true
           })
-        }else{
+        }else if($scope.user.companyName == undefined || $scope.user.companyName == null){
+	       toastr.error('Please enter your Company Name', {
+	            closeButton: true
+	       })
+        }else if($scope.user.icao == undefined || $scope.user.icao == null){
+ 	       toastr.error('Please enter your ICAO', {
+	            closeButton: true
+	       })
+       }else{
           if($scope.status == true){
             $scope.user.status = 'active';
           }else{
@@ -92,7 +100,7 @@
           // if($scope.user.userNoteId == undefined){
           //   $scope.user.userNoteId = null;
           // }
-          var updateData = "companyName=" + $scope.user.companyName + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&userNote=" + $scope.user.clientNote + "&userNoteId=" + $scope.user.userNoteId + "&userTypeId=" + $scope.user.userTypeId + "&userProfileId=" + userProfileID;
+          var updateData = "companyName=" + $scope.user.companyName + "&icao=" + $scope.user.icao + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&userNote=" + $scope.user.clientNote + "&userNoteId=" + $scope.user.userNoteId + "&userTypeId=" + $scope.user.userTypeId + "&userProfileId=" + userProfileID;
           UpdateAllFBO.updateUser(updateData).then(function(result) {
             toastr.success(''+result.success+'', {
                 closeButton: true
