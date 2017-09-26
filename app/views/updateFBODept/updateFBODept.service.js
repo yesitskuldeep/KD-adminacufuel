@@ -19,6 +19,20 @@
           })
           return deferred.promise;
         }
+        
+        this.getAssociatedCompany = function(id) {
+
+            var deferred = $q.defer();
+            $http({
+                method : 'GET',
+                url : BE.url +'/account/user/getFlightDeptCompany/'+id,
+                headers : {'Content-Type': 'application/json'},
+            })
+            .success(function(result) {
+                deferred.resolve(result);
+            })
+            return deferred.promise;
+          }
 
         this.getNotes = function(id) {
 

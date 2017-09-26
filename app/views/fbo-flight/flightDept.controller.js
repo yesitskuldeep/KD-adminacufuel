@@ -64,10 +64,11 @@
           console.log($scope.user)
           var formdata = "companyName=" + $scope.user.companyName + "&email=" + $scope.user.email + "&username=" + $scope.user.username + "&firstName=" + $scope.user.firstName + "&lastName=" + $scope.user.lastName + "&password=" + $scope.user.password + "&phone=" + $scope.user.phone + "&mobile=" + $scope.user.mobile + "&status=" + $scope.user.status + "&userType=" + $scope.user.userType + "&clientNote=" + $scope.user.clientNote;
           FBOFlight.registerUser(formdata).then(function(result) {
-            $scope.registerId = result;
+            $scope.registerId = result.id;
+            $scope.companyId = result.companyId;
             $scope.data.accountId = $scope.registerId;
-            $scope.aircraft.accountId = $scope.registerId;
-            if($scope.aircraft.accountId == $scope.registerId){
+            $scope.aircraft.accountId = $scope.companyId;
+            if($scope.aircraft.accountId == $scope.companyId){
               $scope.saveCompanyData();
             }
             toastr.success('Created Successfully', {
@@ -148,6 +149,7 @@
       $scope.addData = [];
 
       $scope.saveCompanyData = function(){
+    	  console.log('=========2========',$scope.aircraftDetails);
         for(var i=0; i<$scope.aircraftDetails.length;i++){
             $scope.addData.push({ 
               'tail': $scope.aircraftDetails[i].tail,
@@ -173,6 +175,13 @@
         });
         
       }
+      getCompanyName();
+      function getCompanyName(){
+			$scope.showLoader = true;
+			FBOFlight.getCompanyName().then(function(result) {
+	        	$scope.compNameList = result;
+	        })
+		}
 
       // getData();
       // function getData(){

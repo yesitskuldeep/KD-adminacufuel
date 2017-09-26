@@ -84,7 +84,8 @@
     <div class="col-lg-8">
         <!-- <h2 ng-click="editName()" ng-show="showCompany" style="cursor: pointer;">Tellus Institute</h2> -->
         <div style="margin-top: 20px;">
-          <input type="text" style="width:50%; float: left;" placeholder="Enter Company Name" ng-model="user.companyName" class="form-control companyNameError" ng-keyup="companyNameValid()">
+        	<input type="text" style="width:50%; float: left;" placeholder="Enter Company Name" ng-model="user.companyName" uib-typeahead="company.companyName for company in compNameList | filter:$viewValue | limitTo:8" class="form-control companyNameError">
+                                       
           <span class="redAstrick" style="margin: 0 5px;">*</span>
           <label class="customErrorMessage" ng-show="comnayNameInvalid" style="margin-top: 7px;">This field is required.</label>
           <div class="clearfix"></div>
@@ -308,7 +309,7 @@
             <div class="col-lg-5">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Account Authenticatio & Payment Method</h5>
+                        <h5>Account Authentication & Payment Method</h5>
                         
                     </div>
                     <div class="ibox-content">

@@ -92,6 +92,21 @@
           })
           return deferred.promise;
         }
+        
+        this.getCompanyName = function() {
+            var deferred = $q.defer();
+            $http({
+                method : 'GET',
+                url : BE.url +'/company/searchName',
+                headers : {'Content-Type': 'application/json'},
+            })
+            .then(function (result){
+                deferred.resolve(result.data);
+            },function (result){
+                deferred.resolve(result.data);
+            })
+            return deferred.promise;
+         }
    }
 
 })();
